@@ -1,0 +1,10 @@
+RemoveHandler php-cgi
+
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+#не файл
+RewriteCond %{REQUEST_FILENAME} !-d
+#не директория
+RewriteRule (.*)/? index.php?q=$1 [L,QSA]
+</IfModule>
