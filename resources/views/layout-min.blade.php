@@ -11,7 +11,7 @@
     <meta property="og:title" content="Зебра Таргет - инструмент для поиска целевой аудитории">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://vk.ru/js/api/openapi.js?169" type="text/javascript"></script>
+    <script src="https://vk.com/js/api/openapi.js?169" type="text/javascript"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 </head>

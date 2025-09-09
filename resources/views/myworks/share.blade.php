@@ -57,7 +57,7 @@
 
             <img src="{{ $item->user->photo }}" width="35" height="35" class="circle">
             <span class="right">
-            <a href="https://vk.ru/id{{ $item->user->vk_id }}" target="_blank" class="submitbutton">
+            <a href="https://vk.com/id{{ $item->user->vk_id }}" target="_blank" class="submitbutton">
             &nbsp; &nbsp; {{ $item->user->first_name }} {{ $item->user->last_name }}
             </a><br>
         Автор шаблона</span>

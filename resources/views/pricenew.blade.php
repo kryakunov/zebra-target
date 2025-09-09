@@ -97,7 +97,7 @@ $sign4 = md5($MERCHANT_ID.':'.$ORDER_AMOUNT4.':'.$SECRET_WORD.':'.$PAYMENT_ID4);
    </div>
 </div>
 <hr>
-Если вы не нашли подходящего способа оплаты - напишите мне в личные сообщения <a href="https://vk.ru/im?sel=185466160" target="_blank">ВКонтакте</a>
+Если вы не нашли подходящего способа оплаты - напишите мне в личные сообщения <a href="https://vk.com/im?sel=185466160" target="_blank">ВКонтакте</a>
 
 <br><br>
 <div class="row">

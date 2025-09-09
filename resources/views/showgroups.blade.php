@@ -96,7 +96,7 @@ if (!empty($value['city']['title'])) $value['city']['title'] = "<span class='Sho
 	<tr>
 		<td class="align-middle ShowGroupDesc" width="10"><?=$value['id']?></td>
 		<td class="ShowGroupDesc" width="10"><img class='circle' width='50' height='50' src='<?=$value['photo_50']?>'></td>
-		<td class=""><a href='https://vk.ru/club<?=$value['id']?>' target='_blank' class='ShowGroupName'><?=$value['name']?></a>
+		<td class=""><a href='https://vk.com/club<?=$value['id']?>' target='_blank' class='ShowGroupName'><?=$value['name']?></a>
 			<?php if (isset($request['status']))
 				echo "<br><span class='ShowGroupDesc'>".$value['status']."</span>"; ?>
 		</td>

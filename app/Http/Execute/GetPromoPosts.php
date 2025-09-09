@@ -56,7 +56,7 @@ class GetPromoPosts extends Execute
             if (strlen((int)$group) != strlen($group))
             {
                 $this->pause();
-                $result = json_decode(file_get_contents("https://api.vk.ru/method/execute.getGroupsId?ids=".$group."&count=1&v=5.131&access_token=".$this->access_token), true);
+                $result = json_decode(file_get_contents("https://api.vk.com/method/execute.getGroupsId?ids=".$group."&count=1&v=5.131&access_token=".$this->access_token), true);
 
                 // Обрабатываем ошибки
                 if (!isset($result['response']))
@@ -79,7 +79,7 @@ class GetPromoPosts extends Execute
                         $this->pause();
                         $this->access_token = $this->getToken();
                         $this->setLog('Сменил токен');
-                        $result = json_decode(file_get_contents("https://api.vk.ru/method/execute.getGroupsId?ids=".$group."&count=1&v=5.131&access_token=".$this->access_token), true);
+                        $result = json_decode(file_get_contents("https://api.vk.com/method/execute.getGroupsId?ids=".$group."&count=1&v=5.131&access_token=".$this->access_token), true);
 
                         if (isset($result['response'])) $error = false;
 
@@ -97,7 +97,7 @@ class GetPromoPosts extends Execute
             do {
                 $this->pause();
                 // Делаем запрос к процедуре которая смотрит 100 id постов (среди которых многие могут быть уже удаленные)
-                $result = json_decode(file_get_contents("https://api.vk.ru/method/execute.getPromoPosts?group=".$group."&likes_min=".$likesMin."&time_min=".$timeMin."&last_post=".$lastPost."&v=5.131&access_token=".$this->access_token), true);
+                $result = json_decode(file_get_contents("https://api.vk.com/method/execute.getPromoPosts?group=".$group."&likes_min=".$likesMin."&time_min=".$timeMin."&last_post=".$lastPost."&v=5.131&access_token=".$this->access_token), true);
 
                 if(is_array($result['response']))
                 if(count($result['response']) < 2 && $result['response'][0] == 0)
@@ -127,7 +127,7 @@ class GetPromoPosts extends Execute
                         $this->pause();
                         $this->access_token = $this->getToken();
                         $this->setLog('Сменил токен');
-                        $result = json_decode(file_get_contents("https://api.vk.ru/method/execute.getPromoPosts?group=".$group."&likes_min=".$likesMin."&time_min=".$timeMin."&last_post=".$lastPost."&v=5.131&access_token=".$this->access_token), true);
+                        $result = json_decode(file_get_contents("https://api.vk.com/method/execute.getPromoPosts?group=".$group."&likes_min=".$likesMin."&time_min=".$timeMin."&last_post=".$lastPost."&v=5.131&access_token=".$this->access_token), true);
 
                         if (isset($result['response'])) $error = false;
 

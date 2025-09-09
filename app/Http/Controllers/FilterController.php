@@ -228,7 +228,7 @@ class FilterController extends ExecController
         foreach ($users as $user)
         {
             $ids = implode(",", $user);
-            $url = "https://api.vk.ru/method/users.get?user_ids=".$ids.",&fields=sex,last_seen,has_photo,status,can_write_private_message,followers_count,is_closed,common_count,friend_status,bdate,online,relation&offset=0&count=300&v=5.89&access_token=".session('token');
+            $url = "https://api.vk.com/method/users.get?user_ids=".$ids.",&fields=sex,last_seen,has_photo,status,can_write_private_message,followers_count,is_closed,common_count,friend_status,bdate,online,relation&offset=0&count=300&v=5.89&access_token=".session('token');
             $result = json_decode(file_get_contents($url),true);
             if (++$i >= 2) { sleep(1); $i = 0; }
             if (!$result['response']) continue;

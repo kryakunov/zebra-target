@@ -84,7 +84,7 @@ $cc = 0;
                 <img src="https://zebra-target.ru/PNG/icon-comment.png" width="16" height="16"> {{ $value['comments'] }} &nbsp;
                 <img src="https://zebra-target.ru/PNG/icon-repost.png" width="16" height="16"> {{ $value['reposts'] }} &nbsp;
                 <img src="https://zebra-target.ru/PNG/icon_clock_alt.png" width="16" height="16"> {{ date('d.m.Y H:i', $value['date']) }} &nbsp;
-                <a href="https://vk.ru/wall{{$value['post']}}" target="_blank">Ссылка на пост</a>
+                <a href="https://vk.com/wall{{$value['post']}}" target="_blank">Ссылка на пост</a>
             </div>
         </div>
     @endforeach

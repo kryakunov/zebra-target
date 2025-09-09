@@ -32,7 +32,7 @@ class GetActivityGroups extends Execute
     public function vkapi($method, $params)
     {
         $params = http_build_query($params);
-        $result = json_decode(file_get_contents('https://api.vk.ru/method/'. $method .'?' . $params), true);
+        $result = json_decode(file_get_contents('https://api.vk.com/method/'. $method .'?' . $params), true);
 
         if (isset($result['response']))
             return $result['response'];
@@ -58,7 +58,7 @@ class GetActivityGroups extends Execute
 
             // Получаем ID групп
             $this->pause();
-            $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.getGroupsId?ids='.$ids.'&count='.$count.'&v=5.131&access_token='.$this->access_token), true);
+            $result = json_decode(file_get_contents('https://api.vk.com/method/execute.getGroupsId?ids='.$ids.'&count='.$count.'&v=5.131&access_token='.$this->access_token), true);
 
             // Обрабатываем ошибки
             if (!isset($result['response']))
@@ -81,7 +81,7 @@ class GetActivityGroups extends Execute
                     $this->pause();
                     $this->access_token = $this->getToken();
                     $this->setLog('Сменил токен');
-                    $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.getGroupsId?ids='.$ids.'&count='.$count.'&v=5.131&access_token='.$this->access_token), true);
+                    $result = json_decode(file_get_contents('https://api.vk.com/method/execute.getGroupsId?ids='.$ids.'&count='.$count.'&v=5.131&access_token='.$this->access_token), true);
 
                     if (isset($result['response'])) $error = false;
 
@@ -151,7 +151,7 @@ class GetActivityGroups extends Execute
 
             $this->pause();
             $params = http_build_query($request_params);
-            $posts = json_decode(file_get_contents('https://api.vk.ru/method/execute.wallGet?' . $params), true);
+            $posts = json_decode(file_get_contents('https://api.vk.com/method/execute.wallGet?' . $params), true);
 
             // Обрабатываем ошибки
             if (!isset($posts['response']))
@@ -175,7 +175,7 @@ class GetActivityGroups extends Execute
                     $request_params['access_token'] = $this->getToken();
                     $this->setLog('Сменил токен');
                     $params = http_build_query($request_params);
-                    $posts = json_decode(file_get_contents('https://api.vk.ru/method/execute.wallGet?' . $params), true);
+                    $posts = json_decode(file_get_contents('https://api.vk.com/method/execute.wallGet?' . $params), true);
 
                     if (isset($posts['response'])) $error = false;
 
@@ -263,7 +263,7 @@ class GetActivityGroups extends Execute
 
             $this->pause();
             $params = http_build_query($request_params);
-            $data = json_decode(file_get_contents('https://api.vk.ru/method/execute.getLikesFromPosts?' . $params), true);
+            $data = json_decode(file_get_contents('https://api.vk.com/method/execute.getLikesFromPosts?' . $params), true);
 
             // Обрабатываем ошибки
             if (!isset($data['response']))
@@ -287,7 +287,7 @@ class GetActivityGroups extends Execute
                     $request_params['access_token'] = $this->getToken();
                     $this->setLog('Сменил токен');
                     $params = http_build_query($request_params);
-                    $data = json_decode(file_get_contents('https://api.vk.ru/method/execute.getLikesFromPosts?' . $params), true);
+                    $data = json_decode(file_get_contents('https://api.vk.com/method/execute.getLikesFromPosts?' . $params), true);
 
                     if (isset($data['response'])) $error = false;
 
@@ -338,7 +338,7 @@ class GetActivityGroups extends Execute
                 $this->pause();
 
                 // Запрашиваем лайки (макс может вернуть 25 000 за раз)
-                $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.getLikes?item_id='.$item_id.'&owner_id='.$owner_id.'&count='.$count.'&offset='.$offset.'&v=5.131&access_token='.$this->access_token), true);
+                $result = json_decode(file_get_contents('https://api.vk.com/method/execute.getLikes?item_id='.$item_id.'&owner_id='.$owner_id.'&count='.$count.'&offset='.$offset.'&v=5.131&access_token='.$this->access_token), true);
 
                 $offset += 25000;
 
@@ -363,7 +363,7 @@ class GetActivityGroups extends Execute
                         $this->pause();
                         $this->access_token = $this->getToken();
                         $this->setLog('Сменил токен');
-                        $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.getLikes?item_id='.$item_id.'&owner_id='.$owner_id.'&count='.$count.'&offset='.$offset.'&v=5.131&access_token='.$this->access_token), true);
+                        $result = json_decode(file_get_contents('https://api.vk.com/method/execute.getLikes?item_id='.$item_id.'&owner_id='.$owner_id.'&count='.$count.'&offset='.$offset.'&v=5.131&access_token='.$this->access_token), true);
 
                         if (isset($result['response'])) $error = false;
 
@@ -408,7 +408,7 @@ class GetActivityGroups extends Execute
 
             $this->pause();
             $params = http_build_query($request_params);
-            $data = json_decode(file_get_contents('https://api.vk.ru/method/execute.getCommentsFromPosts?' . $params), true);
+            $data = json_decode(file_get_contents('https://api.vk.com/method/execute.getCommentsFromPosts?' . $params), true);
 
             // Обрабатываем ошибки
             if (!isset($data['response']))
@@ -431,7 +431,7 @@ class GetActivityGroups extends Execute
                     $this->pause();
                     $request_params['access_token'] = $this->getToken();
                     $this->setLog('Сменил токен');
-                    $data = json_decode(file_get_contents('https://api.vk.ru/method/execute.getCommentsFromPosts?' . $params), true);
+                    $data = json_decode(file_get_contents('https://api.vk.com/method/execute.getCommentsFromPosts?' . $params), true);
 
                     if (isset($data['response'])) $error = false;
 
@@ -486,7 +486,7 @@ class GetActivityGroups extends Execute
                 $this->pause();
 
                 // Запрашиваем комментарии (макс может вернуть 2 500 за раз)
-                $data = json_decode(file_get_contents('https://api.vk.ru/method/execute.getComments?post_id='.$post_id.'&owner_id='.$owner_id.'&count='.$count.'&offset='.$offset.'&v=5.131&access_token='.$this->access_token), true);
+                $data = json_decode(file_get_contents('https://api.vk.com/method/execute.getComments?post_id='.$post_id.'&owner_id='.$owner_id.'&count='.$count.'&offset='.$offset.'&v=5.131&access_token='.$this->access_token), true);
                 $offset += 2500;
 
                 // Обрабатываем ошибки
@@ -510,7 +510,7 @@ class GetActivityGroups extends Execute
                         $this->pause();
                         $this->access_token = $this->getToken();
                         $this->setLog('Сменил токен');
-                        $data = json_decode(file_get_contents('https://api.vk.ru/method/execute.getComments?post_id='.$post_id.'&owner_id='.$owner_id.'&count='.$count.'&offset='.$offset.'&v=5.131&access_token='.$this->access_token), true);
+                        $data = json_decode(file_get_contents('https://api.vk.com/method/execute.getComments?post_id='.$post_id.'&owner_id='.$owner_id.'&count='.$count.'&offset='.$offset.'&v=5.131&access_token='.$this->access_token), true);
 
                         if (isset($data['response'])) $error = false;
 
@@ -538,7 +538,7 @@ class GetActivityGroups extends Execute
     public function getTopics($group)
     {
         // Получаем id топиков (до 2500 за раз)
-        $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.getTopics?group='.$group.'&offset=0&v=5.131&access_token='.$this->access_token), true);
+        $result = json_decode(file_get_contents('https://api.vk.com/method/execute.getTopics?group='.$group.'&offset=0&v=5.131&access_token='.$this->access_token), true);
         $this->pause();
 
         // Обрабатываем ошибки
@@ -562,7 +562,7 @@ class GetActivityGroups extends Execute
                 $this->pause();
                 $this->access_token = $this->getToken();
                 $this->setLog('Сменил токен');
-                $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.getTopics?group='.$group.'&offset=0&v=5.131&access_token='.$this->access_token), true);
+                $result = json_decode(file_get_contents('https://api.vk.com/method/execute.getTopics?group='.$group.'&offset=0&v=5.131&access_token='.$this->access_token), true);
 
                 if (isset($result['response'])) $error = false;
 
@@ -607,7 +607,7 @@ class GetActivityGroups extends Execute
             if ($countComments > 2500) $count = 2500 + $offset; else $count = $countComments;
 
             // Получаем участников каждого топика (за раз не более 2500)
-            $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.getTopicComments?group_id='.$group.'&topic_id='.$topicId.'&offset='.$offset.'&topicComments='.$count.'&v=5.131&access_token='.$this->access_token), true);
+            $result = json_decode(file_get_contents('https://api.vk.com/method/execute.getTopicComments?group_id='.$group.'&topic_id='.$topicId.'&offset='.$offset.'&topicComments='.$count.'&v=5.131&access_token='.$this->access_token), true);
             $this->pause();
 
             // Обрабатываем ошибки
@@ -631,7 +631,7 @@ class GetActivityGroups extends Execute
                     $this->pause();
                     $this->access_token = $this->getToken();
                     $this->setLog('Сменил токен');
-                    $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.getTopicComments?group_id='.$group.'&topic_id='.$topicId.'&offset='.$offset.'&topicComments='.$count.'&v=5.131&access_token='.$this->access_token), true);
+                    $result = json_decode(file_get_contents('https://api.vk.com/method/execute.getTopicComments?group_id='.$group.'&topic_id='.$topicId.'&offset='.$offset.'&topicComments='.$count.'&v=5.131&access_token='.$this->access_token), true);
 
                     if (isset($result['response'])) $error = false;
 

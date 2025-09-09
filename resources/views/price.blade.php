@@ -10,7 +10,7 @@
 @include('errors.session')
 
 <?php
-const PAY_URL = 'https://vk.ru/im?sel=185466160';
+const PAY_URL = 'https://vk.com/im?sel=185466160';
 
 $MERCHANT_ID   = 10139;                    // ID магазина
 $SECRET_WORD   = 'Rz-KqbbAwslJG0LHKFfuHbYwXvAb3Auh';   // Секретный ключ
@@ -105,7 +105,7 @@ $sign4 = md5($MERCHANT_ID.':'.$ORDER_AMOUNT4.':'.$SECRET_WORD.':'.$PAYMENT_ID4);
    </div>
 </div>
 <hr>
-Если вы не нашли подходящего способа оплаты - напишите мне в личные сообщение <a href="https://vk.ru/im?sel=185466160" target="_blank">ВКонтакте</a>
+Если вы не нашли подходящего способа оплаты - напишите мне в личные сообщение <a href="https://vk.com/im?sel=185466160" target="_blank">ВКонтакте</a>
 
 <br><br>
 

@@ -18,7 +18,7 @@ class GetActivityController extends Controller
 
     public function getPosts($group, $offset = 0, $count = 100)
     {
-        $posts = json_decode(file_get_contents('https://api.vk.ru/method/execute.wallget?count='.$count.'&offset='.$offset.'&owner_id=-'.$group.'&v=5.126&access_token='.$this->access_token));
+        $posts = json_decode(file_get_contents('https://api.vk.com/method/execute.wallget?count='.$count.'&offset='.$offset.'&owner_id=-'.$group.'&v=5.126&access_token='.$this->access_token));
 
         return $posts;
     }
@@ -49,7 +49,7 @@ if(session('id') !== 573204714) dd("Технические работы");
             $ids = implode(',', $group);
 
             // Получаем ID групп
-            $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.getGroupsId?ids='.$ids.'&count='.$count.'&v=5.131&access_token='.session('token')), true);
+            $result = json_decode(file_get_contents('https://api.vk.com/method/execute.getGroupsId?ids='.$ids.'&count='.$count.'&v=5.131&access_token='.session('token')), true);
 
             if(!$result or !isset($result['response'])) continue;
 
@@ -60,7 +60,7 @@ if(session('id') !== 573204714) dd("Технические работы");
 
         function vkapi($method, $params) {
             $params = http_build_query($params);
-            $result = json_decode(file_get_contents('https://api.vk.ru/method/'. $method .'?' . $params), true);
+            $result = json_decode(file_get_contents('https://api.vk.com/method/'. $method .'?' . $params), true);
 
 			if (isset($result['response']))
             	return $result['response'];
@@ -146,7 +146,7 @@ if(session('id') !== 573204714) dd("Технические работы");
                             $this->pause();
 
                             // Запрашиваем лайки (макс может вернуть 25 000 за раз)
-                            $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.getLikes?item_id='.$item_id.'&owner_id='.$owner_id.'&count='.$count.'&offset='.$offset.'&v=5.131&access_token='.session('token')), true);
+                            $result = json_decode(file_get_contents('https://api.vk.com/method/execute.getLikes?item_id='.$item_id.'&owner_id='.$owner_id.'&count='.$count.'&offset='.$offset.'&v=5.131&access_token='.session('token')), true);
 
                             $offset += 25000;
 
@@ -175,7 +175,7 @@ if(session('id') !== 573204714) dd("Технические работы");
                             $this->pause();
 
                             // Запрашиваем лайки (макс может вернуть 2500 за раз)
-                            $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.getComments?post_id='.$post_id.'&owner_id='.$owner_id.'&count='.$count.'&offset='.$offset.'&v=5.131&access_token='.session('token')), true);
+                            $result = json_decode(file_get_contents('https://api.vk.com/method/execute.getComments?post_id='.$post_id.'&owner_id='.$owner_id.'&count='.$count.'&offset='.$offset.'&v=5.131&access_token='.session('token')), true);
 
                             $offset += 2500;
 

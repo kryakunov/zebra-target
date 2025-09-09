@@ -11,7 +11,7 @@
     <meta property="og:title" content="Зебра Таргет - инструмент для поиска целевой аудитории">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://vk.ru/js/api/openapi.js?169" type="text/javascript"></script>
+    <script src="https://vk.com/js/api/openapi.js?169" type="text/javascript"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 </head>
@@ -31,7 +31,7 @@
         <div style="display: flex; margin-top: 10px; align-items: center;">
             <div>
             <img src="{{$user['photo']}}" width="50" class="circle"></div>
-            <div style="margin-left: 10px;"><a href="http://vk.ru/id{{$user['id']}}"  class='ShowGroupName' target="_blank">{{$user['first_name']}} {{$user['last_name']}}</a></div>
+            <div style="margin-left: 10px;"><a href="http://vk.com/id{{$user['id']}}"  class='ShowGroupName' target="_blank">{{$user['first_name']}} {{$user['last_name']}}</a></div>
         </div>
     @empty
         Новых друзей не найдено

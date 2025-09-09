@@ -49,7 +49,7 @@ class GroupViewerController extends ExecController
         $date = $result['items'][0]['date'];
         $date = date('d.m.Y', $date);
 
-        $link = 'https://vk.ru/wall' . $result['items'][0]['owner_id'] . '_' . $result['items'][0]['id'];
+        $link = 'https://vk.com/wall' . $result['items'][0]['owner_id'] . '_' . $result['items'][0]['id'];
 
         return view('groupviewer.show', [
             'text' => $text,

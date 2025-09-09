@@ -59,7 +59,7 @@
                       <tr>
                         <td class='ShowGroupDesc' width="5%">{{$value['id'] }}</small></td>
                         <td width='25' class='align-middle'><img src={{ $value['photo_50'] }} class='circle' width=35 height=35></td>
-                        <td><a class='align-middle ShowGroupName' href='https://vk.ru/id{{ $value['id'] }}' target='_blank'>{{$value['first_name']}} {{$value['last_name']}}</a><br><small><?php if(isset($value['status'])) echo $value['status'];?></small>
+                        <td><a class='align-middle ShowGroupName' href='https://vk.com/id{{ $value['id'] }}' target='_blank'>{{$value['first_name']}} {{$value['last_name']}}</a><br><small><?php if(isset($value['status'])) echo $value['status'];?></small>
                         <td class='ShowGroupDesc' >{{ $data[$value['id']] }}</td>
                         <td class='ShowGroupDesc' >
                             {{ $percent }}%

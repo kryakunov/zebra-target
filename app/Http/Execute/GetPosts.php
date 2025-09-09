@@ -89,7 +89,7 @@ class GetPosts extends Execute
             do {
 
                 $get_params = http_build_query($request_params);
-                $result = json_decode(file_get_contents('https://api.vk.ru/method/newsfeed.search?' . $get_params), true);
+                $result = json_decode(file_get_contents('https://api.vk.com/method/newsfeed.search?' . $get_params), true);
 
                 if (++$i <= 2) { $i = 0; sleep(1); }
 

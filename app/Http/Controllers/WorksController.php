@@ -105,7 +105,7 @@ class WorksController extends ExecController
                 $count = count($data);
                if ($count < 25) {
                 $ids = implode(',', $data);
-                $data = json_decode(file_get_contents('https://api.vk.ru/method/execute.getGroupsId?ids='.$ids.'&count='.$count.'&access_token='.session('token').'&v=5.131'), true);
+                $data = json_decode(file_get_contents('https://api.vk.com/method/execute.getGroupsId?ids='.$ids.'&count='.$count.'&access_token='.session('token').'&v=5.131'), true);
                 if (!$data['response']) return redirect()->back()->with('error', 'Проверьте правильность введенных ID')->withInput();
                 $data = $data['response'];
                }

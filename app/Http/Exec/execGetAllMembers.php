@@ -122,7 +122,7 @@ class GetAllMembers extends Exec
                     $this->access_token = $this->getToken();
                     $request_params['access_token'] = $this->access_token;
                     $this->setLog('Сменил токен');
-                  //  $result = json_decode(file_get_contents('https://api.vk.ru/method/groups.getMembers?group_id='.$group.'&offset=0&count=1&v=5.131&access_token='.$this->access_token), true);
+                  //  $result = json_decode(file_get_contents('https://api.vk.com/method/groups.getMembers?group_id='.$group.'&offset=0&count=1&v=5.131&access_token='.$this->access_token), true);
                     $result = $this->vkapi('groups.getMembers', $request_params);
 
                     if (isset($result['response'])) $error = false;

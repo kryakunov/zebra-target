@@ -47,7 +47,7 @@
 
     @if($request['format'] == 0)
 	@foreach($data as $value)
-        <a href=https://vk.ru/id{{$value['id']}} target=_blank><img src={{$value['photo_50']}} class=circle ></a>
+        <a href=https://vk.com/id{{$value['id']}} target=_blank><img src={{$value['photo_50']}} class=circle ></a>
 	@endforeach
     @elseif($request['format'] == 1)
     <table class='table'>
@@ -64,7 +64,7 @@
             <tr>
                 <td width='10'><img src="{{$value['photo_50']}}" class='circle' width='50' height='50'></td>
                 <td>
-                    <a href=https://vk.ru/id{{$value['id']}} target=_blank class='ShowGroupName'>
+                    <a href=https://vk.com/id{{$value['id']}} target=_blank class='ShowGroupName'>
                         {{$value['first_name'].' '.$value['last_name']}}
                     </a><br>
                     <label class='ProfileStatus'>
@@ -73,7 +73,7 @@
                 </td>
                 <td class='ShowGroupDesc'>{{isset($value['followers_count']) ? $value['followers_count'] : ''}}</td>
                 <td class='ShowGroupDesc'><?php if(isset($value['is_closed']) and $value['is_closed'] == true)echo'Закрытый';else echo'Открытый';?></td>
-                <td><a href=https://vk.ru/id{{$value['id']}} target=_blank class='btn btn-outline-success btn-sm' id='btn-views'>Перейти</a></td>
+                <td><a href=https://vk.com/id{{$value['id']}} target=_blank class='btn btn-outline-success btn-sm' id='btn-views'>Перейти</a></td>
             </tr>
         @endforeach
         </tbody>

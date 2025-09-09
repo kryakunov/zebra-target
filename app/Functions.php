@@ -19,8 +19,8 @@ class Functions
     {
         $delete = [
             "/club",
-            "vk.ru",
-            "vk.ru",
+            "vk.com",
+            "vk.com",
             "http://",
             "https://",
             "/public",
@@ -50,7 +50,7 @@ class Functions
     public static function clearUserName($name)
     {
         $delete = [
-            "vk.ru",
+            "vk.com",
             "http://",
             "https://",
             " ",
@@ -84,7 +84,7 @@ class Functions
         $data = [];
         $i = 0;
         $offset = 0;
-        $result = json_decode(file_get_contents('https://api.vk.ru/method/groups.getMembers?group_id='.$group.'&offset='.$offset.'&count=1000&v=5.131&access_token='.$token), true);
+        $result = json_decode(file_get_contents('https://api.vk.com/method/groups.getMembers?group_id='.$group.'&offset='.$offset.'&count=1000&v=5.131&access_token='.$token), true);
 
         if (isset($result['error'])) {
             $data['exceptions'][0] = $result['error']['error_msg'];
@@ -96,7 +96,7 @@ class Functions
         $count = $result['response']['count'];
 
         do{
-            $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.getMembersOld?group_id='.$group.'&offset='.$offset.'&count=1000&v=5.131&access_token='.$token), true);
+            $result = json_decode(file_get_contents('https://api.vk.com/method/execute.getMembersOld?group_id='.$group.'&offset='.$offset.'&count=1000&v=5.131&access_token='.$token), true);
 
             if (isset($result['error'])) {
                 $data['exceptions'] = $result['error']['error_msg'];
@@ -249,7 +249,7 @@ class Functions
 
     public static function vkapi($method, $params)
     {
-        $ch = curl_init('https://api.vk.ru/method/'.$method.'?');
+        $ch = curl_init('https://api.vk.com/method/'.$method.'?');
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params, '', '&'));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -269,7 +269,7 @@ class Functions
 
     public static function vkapOld($method, $params) {
         $params = http_build_query($params);
-        $result = json_decode(file_get_contents('https://api.vk.ru/method/'. $method .'?' . $params), true);
+        $result = json_decode(file_get_contents('https://api.vk.com/method/'. $method .'?' . $params), true);
 
         if (isset($result['response'])) {
             return $result['response'];

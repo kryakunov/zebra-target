@@ -61,7 +61,7 @@ class TopFollowers
         if (!$token) return false;
         sleep(1);
         // Проверяем токен на валидность
-        $result = json_decode(file_get_contents('https://api.vk.ru/method/users.get?v=5.131&access_token='.$token['token']), true);
+        $result = json_decode(file_get_contents('https://api.vk.com/method/users.get?v=5.131&access_token='.$token['token']), true);
         if(!isset($result['response']))
         {
             $this->changeStatus($token['token'], 'no valid');
@@ -174,7 +174,7 @@ class TopFollowers
         do {
             // Делаем запрос к VK API
             $get_params = http_build_query($request_params);
-            $result = json_decode(file_get_contents('https://api.vk.ru/method/groups.getMembers?'. $get_params), true);
+            $result = json_decode(file_get_contents('https://api.vk.com/method/groups.getMembers?'. $get_params), true);
             $request_params['offset'] = $request_params['offset'] + 1000;
             if (array_key_exists('error', $result)) break;
             $countUsers = $result['response']['count'];
@@ -218,7 +218,7 @@ class TopFollowers
 
                     // Делаем запрос к VK API
                     $get_params = http_build_query($this->request_params_user);
-                    $response = json_decode(file_get_contents('https://api.vk.ru/method/groups.get?v=5.130&'. $get_params), true);
+                    $response = json_decode(file_get_contents('https://api.vk.com/method/groups.get?v=5.130&'. $get_params), true);
 
                     if (isset($response['error']) or !isset($response['response']['items'])) {
                         $this->checkError($response);

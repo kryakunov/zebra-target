@@ -339,7 +339,7 @@ class UsersFilter extends Exec
             if ($percent > 99) $percent = 99;
             $this->setPercent($percent);
 
-            $url = "https://api.vk.ru/method/users.get?user_id=".$user.",&fields=counters&count=300&v=5.89&access_token=".$this->access_token;
+            $url = "https://api.vk.com/method/users.get?user_id=".$user.",&fields=counters&count=300&v=5.89&access_token=".$this->access_token;
             $result = json_decode(file_get_contents($url),true);
             $this->pause();
             if (!isset($result['response'][0]['counters'])) continue;

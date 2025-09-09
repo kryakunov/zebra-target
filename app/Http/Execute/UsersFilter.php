@@ -97,7 +97,7 @@ class UsersFilter extends Execute
             $this->setPercent($percent);
 
             $ids = implode(",", $user);
-            $url = "https://api.vk.ru/method/users.get?user_ids=".$ids.",&fields=sex,last_seen,has_photo,status,can_write_private_message,followers_count,is_closed,common_count,friend_status,bdate,online,relation&offset=0&count=300&v=5.89&access_token=".$this->access_token;
+            $url = "https://api.vk.com/method/users.get?user_ids=".$ids.",&fields=sex,last_seen,has_photo,status,can_write_private_message,followers_count,is_closed,common_count,friend_status,bdate,online,relation&offset=0&count=300&v=5.89&access_token=".$this->access_token;
             $result = json_decode(file_get_contents($url),true);
             $this->pause();
 
@@ -124,7 +124,7 @@ class UsersFilter extends Execute
                     sleep(1);
                     $request_params['access_token'] = $this->getToken();
                     $params = http_build_query($request_params);
-                    $url = "https://api.vk.ru/method/users.get?user_ids=".$ids.",&fields=sex,last_seen,has_photo,status,can_write_private_message,followers_count,is_closed,common_count,friend_status,bdate,online,relation&offset=0&count=300&v=5.89&access_token=".$this->access_token;
+                    $url = "https://api.vk.com/method/users.get?user_ids=".$ids.",&fields=sex,last_seen,has_photo,status,can_write_private_message,followers_count,is_closed,common_count,friend_status,bdate,online,relation&offset=0&count=300&v=5.89&access_token=".$this->access_token;
                     $result = json_decode(file_get_contents($url),true);
 
                     if (isset($result['response']['items']))
@@ -312,7 +312,7 @@ class UsersFilter extends Execute
             if ($percent > 99) $percent = 99;
             $this->setPercent($percent);
 
-            $url = "https://api.vk.ru/method/users.get?user_id=".$user.",&fields=counters&count=300&v=5.89&access_token=".$this->access_token;
+            $url = "https://api.vk.com/method/users.get?user_id=".$user.",&fields=counters&count=300&v=5.89&access_token=".$this->access_token;
             $result = json_decode(file_get_contents($url),true);
             $this->pause();
             if (!isset($result['response'][0]['counters'])) continue;

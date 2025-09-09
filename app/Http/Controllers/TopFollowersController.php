@@ -46,7 +46,7 @@ class TopFollowersController extends Controller
         do {
             // Делаем запрос к VK API
             $get_params = http_build_query($request_params);
-            $result = json_decode(file_get_contents('https://api.vk.ru/method/groups.getMembers?'. $get_params), true);
+            $result = json_decode(file_get_contents('https://api.vk.com/method/groups.getMembers?'. $get_params), true);
             $request_params['offset'] = $request_params['offset'] + 1000;
             if (array_key_exists('error', $result)) break;
             $countUsers = $result['response']['count'];
@@ -94,7 +94,7 @@ class TopFollowersController extends Controller
 
         sleep(1);
         $ids = implode(",", $ids);
-        $result = json_decode(file_get_contents('https://api.vk.ru/method/groups.getById?v=5.126&fields=members_count,type&group_ids='.$ids.'&access_token='.session('token')), true);
+        $result = json_decode(file_get_contents('https://api.vk.com/method/groups.getById?v=5.126&fields=members_count,type&group_ids='.$ids.'&access_token='.session('token')), true);
 
         $membersCount = 0;
         $groups = [];
@@ -168,7 +168,7 @@ class TopFollowersController extends Controller
 
 				// Делаем запрос к VK API
 				$get_params = http_build_query($request_params);
-				$result = json_decode(file_get_contents('https://api.vk.ru/method/groups.getMembers?'. $get_params), true);
+				$result = json_decode(file_get_contents('https://api.vk.com/method/groups.getMembers?'. $get_params), true);
 				$request_params['offset'] = $request_params['offset'] + 1000;
 				if (array_key_exists('error', $result)) break;
 				$countUsers = $result['response']['count'];
@@ -193,7 +193,7 @@ class TopFollowersController extends Controller
 
 						// Делаем запрос к VK API
 						$get_params = http_build_query($request_params2);
-						$result2 = json_decode(file_get_contents('https://api.vk.ru/method/groups.get?'. $get_params), true);
+						$result2 = json_decode(file_get_contents('https://api.vk.com/method/groups.get?'. $get_params), true);
 
 						if (count($result2['response']['items']) > 0)
 						{

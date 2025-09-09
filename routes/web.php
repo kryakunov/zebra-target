@@ -17,22 +17,9 @@ use App\Jobs\SubJob;
 use App\Jobs\TestJob;
 use App\Chain;
 
-Route::get('/url', [\App\Http\Controllers\PaymentController::class, 'index']);
+//Route::get('/url', [\App\Http\Controllers\PaymentController::class, 'index']);
 
-Route::post('/tesst', function(Request $request) {
-
-
-    file_put_contents('afil.txt',$request->file('photo')->getPathname() );
-        // Сохранение файла
-        if ($request->file('photo')) {
-            $path = $request->file('photo')->store('photoss', 'public'); // Сохраняем в папку photos в хранилище public
-            return response()->json(['sucscess' => 'Фото успешно загружено!', 'path' => $path]);
-        }
-
-        return response()->json(['error' => 'Ошибка загрузки фото.'], 400);
-})->name('tesst');
-
-Route::get('/job', 'AdminController@job');
+//Route::get('/job', 'AdminController@job');
 
 Route::get('/exec', 'WhenOnlineController@exec');
 
@@ -114,7 +101,7 @@ Route::post('/price', 'VkApiController@price')->name('price');
 
 
 
-Route::group(['middleware' => 'authVk'], function() 
+Route::group(['middleware' => 'authVk'], function()
 {
     Route::get('/logout', 'VkApiController@logout')->name('logout');
     //Route::get('/profile', 'ProfileController@index')->name('profile');
@@ -148,12 +135,12 @@ Route::group(['middleware' => 'authVk'], function()
     Route::get('/savesampletimer/{id}', 'SampleController@SaveSampleTimer')->name('SaveSampleTimer');
     Route::get('/deletestep/{id}', 'SampleController@deletestep')->name('deletestep');
     Route::get('/createsample/{uri?}', 'SampleController@createsample')->name('createsample');
-    
-    
+
+
     Route::get('/cronstartworks', 'WorksController@cronStartWorks')->name('CronStartWorks');
     Route::get('/saveworktimer/{id}', 'WorksController@SaveWorkTimer')->name('SaveWorkTimer');
 
-    
+
     Route::get('/samplesstart/{id?}', 'SampleController@startCron');
 
 
@@ -161,7 +148,7 @@ Route::group(['middleware' => 'authVk'], function()
     Route::get('/samplerun/{id}', 'WorksController@SampleRun')->name('samplerun');
     Route::get('/sampleruncron', 'WorksController@SampleRunCron')->name('sampleruncron');
 
-    
+
     Route::get('/getworkshare/{id}', 'MyWorksController@getWorkShare')->name('getworkshare');
     Route::get('/getchainshare/{id}', 'MyWorksController@getChainShare')->name('getchainshare');
 
@@ -172,7 +159,7 @@ Route::group(['middleware' => 'authVk'], function()
     Route::get('/sharechain/{id}', 'MyWorksController@sharechain')->name('sharechain');
     Route::get('/works/{id}', 'MyWorksController@works')->name('works');
 
-    
+
     Route::get('/getworkallmembers/{id}', 'MyWorksController@getWorkAllMembers')->name('getworkallmembers');
     Route::get('/getworkusersfilter/{id}', 'MyWorksController@getWorkUsersFilter')->name('getworkusersfilter');
     Route::get('/getworkseachgroups/{id}', 'MyWorksController@getWorkSearchGroups')->name('getworkseachgroups');
@@ -187,7 +174,7 @@ Route::group(['middleware' => 'authVk'], function()
 
     Route::get('/workdelete/{id}', 'MyWorksController@delete')->name('workdelete');
     Route::get('/deleteallworks', 'MyWorksController@deleteallworks')->name('deleteallworks');
-    
+
     Route::get('killmywork/{id}', 'MyWorksController@kill')->name('killmywork');
 
     Route::get('/getworkgetmembers/{id}', 'ProfileController@getWorkGetMembers')->name('getworkgetmembers');
@@ -212,7 +199,7 @@ Route::group(['middleware' => 'authVk'], function()
     Route::get('/cloudshowusers', 'CloudController@cloudshowusers')->name('cloudshowusers');
     Route::get('/cloudshowgroups', 'CloudController@cloudshowgroups')->name('cloudshowgroups');
     Route::get('/cloudshowposts', 'CloudController@cloudshowposts')->name('cloudshowposts');
-    
+
     Route::get('/showgroups', 'ShowGroupsController@show')->name('showgroups');
     Route::post('/showgroups', 'ShowGroupsController@handler')->name('showgroups');
 
@@ -227,7 +214,7 @@ Route::group(['middleware' => 'authVk'], function()
 
     Route::get('/getactivitygroups', 'WorksController@show')->name('getactivitygroups');
     Route::post('/getactivitygroups', 'WorksController@handler')->name('getactivitygroups');
- 
+
     Route::get('/getgroupcontacts', 'WorksController@show')->name('getgroupcontacts');
     Route::post('/getgroupcontacts', 'WorksController@handler')->name('getgroupcontacts');
 
@@ -292,10 +279,10 @@ Route::group(['middleware' => 'authVk'], function()
     Route::post('/support/{id}', 'SupportController@questionStore')->name('questionStore');
     Route::get('/support/{id}', 'SupportController@show')->name('supportShow');
     Route::post('/supportreply/{id}', 'SupportController@supportReply')->name('supportReply');
-    
+
     Route::get('/socialnetworks', 'SocialNetworksController@show')->name('socialnetworks');
     Route::post('/socialnetworks', 'SocialNetworksController@handler')->name('socialnetworks');
-    
+
     // Сбор обсуждений
     Route::get('/gettopics', 'GetTopicsController@show')->name('gettopics');
     Route::post('/gettopics', 'GetTopicsController@handler')->name('gettopics');
@@ -311,7 +298,7 @@ Route::group(['middleware' => 'authVk'], function()
     Route::get('/newfriendsupdate', 'FriendsController@update')->name('NewFriendsUpdate');
     Route::get('/newfriendsget/{id}', 'FriendsController@getNewFriends')->name('NewFriendsGet');
     Route::get('/delfriendsget/{id}', 'FriendsController@getDelFriends')->name('DelFriendsGet');
-    
+
     Route::get('/newmembers', 'NewMembersController@show')->name('NewMembersShow');
     Route::post('/newmembers', 'NewMembersController@store')->name('NewMembersStore');
     Route::get('/newmemberscreate', 'NewMembersController@create')->name('NewMembersCreate');
@@ -319,7 +306,7 @@ Route::group(['middleware' => 'authVk'], function()
     Route::get('/newmembersshowdelete/{id}', 'NewMembersController@newmembersshowdelete')->name('NewMembersShowDelete');
     Route::get('/newmembersupdate/{id}', 'NewMembersController@update')->name('NewMembersUpdate');
     Route::get('/newmembersget/{id}', 'NewMembersController@getNewMembers')->name('NewMembersGet');
-    
+
 
     // Все подписчики групп
    /* Route::get('/getallmembers', 'GetAllMembersController@show')->name('getallmembers');
@@ -355,7 +342,7 @@ Route::group(['middleware' => 'authVk'], function()
 
 
    // Route::post('/usersgroups', 'UsersGroupsController@getIds')->name('usersgroupsgetids');
-    
+
 });
 
 

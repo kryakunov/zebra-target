@@ -56,7 +56,7 @@
                 <tr>
                     <td class='ShowGroupDesc'>{{ $value['id'] }}</td>
                     <td width='5%'><img src={{$value['photo_50']}} class='circle' width=35 height=35></td>
-                    <td ><a class='ShowGroupName' href=http://vk.ru/club{{$value['id']}} target='_blank'> {{ $value['name'] }}</a><br><small>{{(isset($value['status'])) ? $value['status'] : ''}}</small></td>
+                    <td ><a class='ShowGroupName' href=http://vk.com/club{{$value['id']}} target='_blank'> {{ $value['name'] }}</a><br><small>{{(isset($value['status'])) ? $value['status'] : ''}}</small></td>
                     <td class='ShowGroupDesc'> {{ (isset($value['members_count'])) ? $value['members_count'] : '' }}</td>
                     <td class='ShowGroupDesc'> {{ $count[$value['id']] }}</td>
                 </tr>

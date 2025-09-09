@@ -30,7 +30,7 @@
         @if(isset($ref))
         <label class='label'><b>Ваш пригласитель:</b></label><br>
             <img src="{{$ref['photo']}}" width="30" class="circle">
-            <a href="http://vk.ru/id{{$ref['vk_id']}}" class='ShowGroupName' target="_blank">{{$ref['first_name']}} {{$ref['last_name']}}</a>
+            <a href="http://vk.com/id{{$ref['vk_id']}}" class='ShowGroupName' target="_blank">{{$ref['first_name']}} {{$ref['last_name']}}</a>
 
         @endif
     </div>
@@ -64,7 +64,7 @@
 
                     <tr>
                         <td width="30"><img src="{{$ref['photo']}}" width="30" class="circle"> </td>
-                        <td><a href="http://vk.ru/id{{$ref['vk_id']}}" class='ShowGroupName' target="_blank">{{$ref['first_name']}} {{$ref['last_name']}}</a></td>
+                        <td><a href="http://vk.com/id{{$ref['vk_id']}}" class='ShowGroupName' target="_blank">{{$ref['first_name']}} {{$ref['last_name']}}</a></td>
                         <td class='ShowGroupDesc'>{{ is_numeric($ref['reg']) ? date('d.m.Y', $ref['reg']) : date('d.m.Y', strtotime($ref['reg'])) }}</td>
                         <td class="payment">{{isset($userPayments[$ref['vk_id']]) ? $userPayments[$ref['vk_id']] : ''}}</td>
                         <td class='ShowGroupDesc'>{{ is_numeric($ref['last_seen']) ? date('d.m.Y', $ref['last_seen']) :  date('d.m.Y', strtotime($ref['last_seen'])) }}</td>
@@ -95,7 +95,7 @@
                 @foreach($payments as $payment)
                     <tr>
                         <td width="30"><img src="{{$payment['photo']}}" width="30" class="circle"> </td>
-                        <td class='ShowGroupName'><a href="http://vk.ru/id{{$payment['user_id']}}" class='ShowGroupName' target="_blank">{{$payment['first_name'] . ' ' . $payment['last_name']}}</a></td>
+                        <td class='ShowGroupName'><a href="http://vk.com/id{{$payment['user_id']}}" class='ShowGroupName' target="_blank">{{$payment['first_name'] . ' ' . $payment['last_name']}}</a></td>
                         <td class='ShowGroupName'>{{$payment['package']}}</td>
                         <td class='payment'>+ {{$payment['reward']}} руб.</td>
                         <td class='ShowGroupDesc'>{{date("d.m.Y", strtotime($payment['created_at']))}}</td>

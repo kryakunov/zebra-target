@@ -136,7 +136,7 @@
         Найдено: <b>{{count($data)}}</b>
     </div>
         <textarea class="output-panel form-control mb-2"  id="textarea" rows="12">@foreach($data as $id)
-https://vk.ru/club{{$id}}
+https://vk.com/club{{$id}}
 @endforeach</textarea>
     <button type="button" class="btn btn-outline-dark margin"  onclick="copy()">Скопировать</button> <br><br>
 @endif

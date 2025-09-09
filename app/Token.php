@@ -47,7 +47,7 @@ class Token extends Model
 
     public static function checkToken($token)
     {
-        $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.opinionLeaders?v=5.131&access_token='.$token), true);
+        $result = json_decode(file_get_contents('https://api.vk.com/method/execute.opinionLeaders?v=5.131&access_token='.$token), true);
 
         if(!isset($result['response']))
         {
@@ -67,7 +67,7 @@ class Token extends Model
         foreach($tokens as $token)
         {
             sleep(1);
-            $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.opinionLeaders?v=5.131&access_token='.$token['token']), true);
+            $result = json_decode(file_get_contents('https://api.vk.com/method/execute.opinionLeaders?v=5.131&access_token='.$token['token']), true);
 
             if(!isset($result['response']))
             {
@@ -86,7 +86,7 @@ dd('use');
         foreach($tokens as $token)
         {
             sleep(1);
-            $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.opinionLeaders?v=5.131&access_token='.$token['token']), true);
+            $result = json_decode(file_get_contents('https://api.vk.com/method/execute.opinionLeaders?v=5.131&access_token='.$token['token']), true);
             if(!isset($result['response']))
             {
                 Token::changeStatus($token['token'], 'no valid');

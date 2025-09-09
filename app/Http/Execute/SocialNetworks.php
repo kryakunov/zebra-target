@@ -72,7 +72,7 @@ class SocialNetworks extends Execute
 
     public function vkapi($method, $params) {
         $params = http_build_query($params);
-        $result = json_decode(file_get_contents('https://api.vk.ru/method/'. $method .'?' . $params), true);
+        $result = json_decode(file_get_contents('https://api.vk.com/method/'. $method .'?' . $params), true);
 
         if (isset($result['response'])) {
             return $result['response'];

@@ -90,9 +90,9 @@ class SearchGroups extends Execute
                     $this->setPercent($percent);
 
                     $params = http_build_query($request_params);
-                    if ($i == 1) $result = json_decode(file_get_contents('https://api.vk.ru/method/groups.search?q='.$qq.'&'.$params.'&v=5.126&count=1000&access_token='.$this->access_token), true);
-                        else $result = json_decode(file_get_contents('https://api.vk.ru/method/groups.search?q='.$qq.'&'.$params.'&city_id='.$i.'&v=5.126&count=1000&access_token='.$this->access_token), true);
-                 //  без учета городво// $result = json_decode(file_get_contents('https://api.vk.ru/method/groups.search?q='.$qq.'&'.$params.'&v=5.126&count=1000&access_token='.$this->access_token), true);
+                    if ($i == 1) $result = json_decode(file_get_contents('https://api.vk.com/method/groups.search?q='.$qq.'&'.$params.'&v=5.126&count=1000&access_token='.$this->access_token), true);
+                        else $result = json_decode(file_get_contents('https://api.vk.com/method/groups.search?q='.$qq.'&'.$params.'&city_id='.$i.'&v=5.126&count=1000&access_token='.$this->access_token), true);
+                 //  без учета городво// $result = json_decode(file_get_contents('https://api.vk.com/method/groups.search?q='.$qq.'&'.$params.'&v=5.126&count=1000&access_token='.$this->access_token), true);
 
                     // Обрабатываем ошибки
                     if (!isset($result['response']))
@@ -115,9 +115,9 @@ class SearchGroups extends Execute
                             $this->pause();
                             $this->access_token = $this->getToken();
                             $this->setLog('Сменил токен');
-                            if ($i == 1) $result = json_decode(file_get_contents('https://api.vk.ru/method/groups.search?q='.$qq.'&'.$params.'&v=5.126&count=1000&access_token='.$this->access_token), true);
-                                else $result = json_decode(file_get_contents('https://api.vk.ru/method/groups.search?q='.$qq.'&'.$params.'&city_id='.$i.'&v=5.126&count=1000&access_token='.$this->access_token), true);
-                        // без учета городов  $result = json_decode(file_get_contents('https://api.vk.ru/method/groups.search?q='.$qq.'&'.$params.'&v=5.126&count=1000&access_token='.$this->access_token), true);
+                            if ($i == 1) $result = json_decode(file_get_contents('https://api.vk.com/method/groups.search?q='.$qq.'&'.$params.'&v=5.126&count=1000&access_token='.$this->access_token), true);
+                                else $result = json_decode(file_get_contents('https://api.vk.com/method/groups.search?q='.$qq.'&'.$params.'&city_id='.$i.'&v=5.126&count=1000&access_token='.$this->access_token), true);
+                        // без учета городов  $result = json_decode(file_get_contents('https://api.vk.com/method/groups.search?q='.$qq.'&'.$params.'&v=5.126&count=1000&access_token='.$this->access_token), true);
 
                             if (isset($result['response'])) $error = false;
 

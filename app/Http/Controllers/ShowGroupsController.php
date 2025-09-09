@@ -39,7 +39,7 @@ class ShowGroupsController extends Controller
 
                 $request_params['group_ids'] = $ids;
                 $get_params = http_build_query($request_params);
-                $result     = json_decode(file_get_contents('https://api.vk.ru/method/groups.getById?' . $get_params), true);
+                $result     = json_decode(file_get_contents('https://api.vk.com/method/groups.getById?' . $get_params), true);
 
                 if (!isset($result['response']) ) continue;
 
@@ -94,7 +94,7 @@ class ShowGroupsController extends Controller
 
             $request_params['group_ids'] = $ids;
             $get_params = http_build_query($request_params);
-            $result     = json_decode(file_get_contents('https://api.vk.ru/method/groups.getById?' . $get_params), true);
+            $result     = json_decode(file_get_contents('https://api.vk.com/method/groups.getById?' . $get_params), true);
 
             if (!isset($result['response']) ) continue;
 

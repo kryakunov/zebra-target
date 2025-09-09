@@ -241,7 +241,7 @@ class ToolsController extends Controller
                 $request_params['posts'] = $ids;
 
                 $params = http_build_query($request_params);
-                $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.showPosts?' . $params), true);
+                $result = json_decode(file_get_contents('https://api.vk.com/method/execute.showPosts?' . $params), true);
 
                 if(!isset($result)) continue;
 

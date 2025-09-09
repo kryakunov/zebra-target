@@ -39,7 +39,7 @@
                       <tr>
                       <td class='ShowGroupDesc'>{{ ++$i }}</td>
                         <td width="30"><img src="{{$group['photo_50']}}" width="30" class="circle"> </td>
-                        <td><a href="http://vk.ru/club{{$group['id']}}"  class='ShowGroupName' target="_blank">{{$group['name']}} </a></td>
+                        <td><a href="http://vk.com/club{{$group['id']}}"  class='ShowGroupName' target="_blank">{{$group['name']}} </a></td>
                         <td class='payment'><a href="{{route('NewMembersGet', ['id' => $group['id']])}}">{{($group['new_members'] > 0) ? $group['new_members'] : ''}}</a></td>
                         <td class='ShowGroupDesc'>{{date("d.m", strtotime($group['created_at']))}}</td>
                         <td class='ShowGroupDesc'>{{date("d.m", strtotime($group['updated_at']))}}</td>

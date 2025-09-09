@@ -80,7 +80,7 @@ class FilterGroups extends Execute
 
 			$request_params['group_ids'] = $ids;
 			$get_params = http_build_query($request_params);
-            $result     = json_decode(file_get_contents('https://api.vk.ru/method/groups.getById?' . $get_params), true);
+            $result     = json_decode(file_get_contents('https://api.vk.com/method/groups.getById?' . $get_params), true);
             $slp++; if ($slp > 2) { sleep(1); $slp = 0; }
 
             // Обрабатываем ошибки
@@ -105,7 +105,7 @@ class FilterGroups extends Execute
                     $request_params['access_token'] = $this->getToken();
                     $this->setLog('Сменил токен');
                     $params = http_build_query($request_params);
-                    $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.wallGet?' . $params), true);
+                    $result = json_decode(file_get_contents('https://api.vk.com/method/execute.wallGet?' . $params), true);
 
                     if (isset($result['response'])) $error = false;
 
@@ -254,7 +254,7 @@ class FilterGroups extends Execute
                     );
 
                     $get_params = http_build_query($request_params);
-                    $result     = json_decode(file_get_contents('https://api.vk.ru/method/execute.getLastPostGroup?' . $get_params), true);
+                    $result     = json_decode(file_get_contents('https://api.vk.com/method/execute.getLastPostGroup?' . $get_params), true);
                     $slp++; if ($slp > 2) { sleep(1); $slp = 0; }
 
                     // Обрабатываем ошибки
@@ -279,7 +279,7 @@ class FilterGroups extends Execute
                             $request_params['access_token'] = $this->getToken();
                             $this->setLog('Сменил токен');
                             $params = http_build_query($request_params);
-                            $result     = json_decode(file_get_contents('https://api.vk.ru/method/execute.getLastPostGroup?' . $get_params), true);
+                            $result     = json_decode(file_get_contents('https://api.vk.com/method/execute.getLastPostGroup?' . $get_params), true);
 
                             if (isset($result['response'])) $error = false;
 
