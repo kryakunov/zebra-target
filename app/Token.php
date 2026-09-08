@@ -45,13 +45,6 @@ class Token extends Model
         return true;
     }
 
-    public function uploadImage(array $data)
-    {
-        return response()->json([
-            'success' =>
-        ]);
-   }
-
     public static function checkToken($token)
     {
         $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.opinionLeaders?v=5.131&access_token='.$token), true);
@@ -61,7 +54,7 @@ class Token extends Model
             self::changeStatus($token, 'no valid');
 
             return false;
-        }f
+        }
 
         return true;
     }
