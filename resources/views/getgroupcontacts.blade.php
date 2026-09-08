@@ -7,6 +7,7 @@
 <div class="title">Сбор людей из поля "контакты" в сообществах</div>
 <div class="content">
 @include('_ScriptDesk')
+@include('partials.tool-guest-start')
 
 
 <form action="{{route('getgroupcontacts')}}" method="post" class="mb-4">
@@ -34,7 +35,7 @@
 <div class="result_format mb-3">
     <label id='pointer' style="cursor: pointer"><input  style="cursor: pointer" id=radio name=result_format type=radio value='id'> ID пользователей вида: 12345</label><br>
     <label id='pointer' style="cursor: pointer"><input  style="cursor: pointer" id=radio name=result_format type=radio value='vk_id'> ID пользователей вида: id12345</label><br>
-    <label id='pointer' style="cursor: pointer"><input  style="cursor: pointer" id=radio name=result_format type=radio value='vk_com_id'> ID пользователей вида: vk.com/id12345</label>
+    <label id='pointer' style="cursor: pointer"><input  style="cursor: pointer" id=radio name=result_format type=radio value='vk_com_id'> ID пользователей вида: vk.ru/id12345</label>
 </div>-->
 <input class="btn btn-success btn_size" type="submit"  id="btnMenu" value=" Начать поиск аудитории"  onclick="change()">
 </form>
@@ -53,4 +54,5 @@
 @endif
 
 </div></div>
+@include('partials.tool-guest-end')
 @endsection

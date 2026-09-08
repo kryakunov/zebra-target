@@ -1,12 +1,13 @@
 @extends('layout')
 
-@section('title') @parent Повторяющиеся N раз @endsection
-
 @section('content')
 <div class="tab">
-<div class="title">Повторяющиеся N раз</div>
+@if(session('token'))
+<h1 class="title">Повторяющиеся N раз</h1>
+@endif
 <div class="content">
 @include('_ScriptDesk')
+@include('partials.tool-guest-start')
 
 
 <form action="{{route('tool5Post')}}" method="post" class="mb-4">
@@ -47,4 +48,5 @@
 
 
 
+@include('partials.tool-guest-end')
 @endsection

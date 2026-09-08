@@ -156,7 +156,7 @@ class MyWorksController extends Controller
         );
 
         $params = http_build_query($request_params);
-        $result = json_decode(file_get_contents('https://api.vk.com/method/database.getCities?' . $params), true);
+        $result = json_decode(file_get_contents('https://api.vk.ru/method/database.getCities?' . $params), true);
 $result = $result['response']['items'];
 
         return json_encode($result);
@@ -180,7 +180,7 @@ var_dump(session('token'));
         );
 
         $params = http_build_query($request_params);
-        $result = json_decode(file_get_contents('https://api.vk.com/method/database.getCountries?' . $params), true);
+        $result = json_decode(file_get_contents('https://api.vk.ru/method/database.getCountries?' . $params), true);
         $result = $result['response']['items'];
 dd($result);
         return json_encode($result);

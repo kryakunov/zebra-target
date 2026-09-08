@@ -14,6 +14,10 @@ class ToolsController extends Controller
 {
     public function tool1()
     {
+        if (!$this->isVkAuthenticated()) {
+            return view('tools.tool1');
+        }
+
         $request = $this->checkWork();
 
         if ($request) {
@@ -208,6 +212,10 @@ class ToolsController extends Controller
 
     public function showPosts(Request $request){
 
+        if (!$this->isVkAuthenticated()) {
+            return view('tools.showPosts');
+        }
+
         $request = $this->checkWork();
 
         if ($request) {
@@ -241,7 +249,7 @@ class ToolsController extends Controller
                 $request_params['posts'] = $ids;
 
                 $params = http_build_query($request_params);
-                $result = json_decode(file_get_contents('https://api.vk.com/method/execute.showPosts?' . $params), true);
+                $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.showPosts?' . $params), true);
 
                 if(!isset($result)) continue;
 

@@ -45,8 +45,8 @@
         <td width="1%"><img src="{{$value['photo_50']}}" class='circle' width='40' height='40'></td>
 		<td>{{$value['first_name'].' '.$value['last_name']}}</td>
 		<td>
-            <a href=https://vk.com/id{{$value['id']}} target=_blank class='btn btn-outline-success btn-sm' id='btn-views'>Открыть профиль</a>
-            <a href=https://vk.com/write{{$value['id']}} target=_blank class='btn btn-outline-success btn-sm' id='btn-views'>Написать в ЛС</a>
+            <a href=https://vk.ru/id{{$value['id']}} target=_blank class='btn btn-outline-success btn-sm' id='btn-views'>Открыть профиль</a>
+            <a href=https://vk.ru/write{{$value['id']}} target=_blank class='btn btn-outline-success btn-sm' id='btn-views'>Написать в ЛС</a>
         </td>
     </tr>
 	@endforeach

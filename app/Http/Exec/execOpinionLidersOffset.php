@@ -45,7 +45,7 @@ class OpinionLiders
         if (!$token) return false;
         sleep(1);
         // Проверяем токен на валидность
-        $result = json_decode(file_get_contents('https://api.vk.com/method/users.get?v=5.131&access_token='.$token['token']), true);
+        $result = json_decode(file_get_contents('https://api.vk.ru/method/users.get?v=5.131&access_token='.$token['token']), true);
         if(!isset($result['response']))
         {
             $this->changeStatus($token['token'], 'no valid');
@@ -281,7 +281,7 @@ class OpinionLiders
             $n = count($users) - 1;
             $users = implode(',', $users);
 
-            $result = json_decode(file_get_contents('https://api.vk.com/method/execute.lidersGet?v=5.131&count=10000&n='.$n.'&users='.$users.'&access_token='.$this->access_token), true);
+            $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.lidersGet?v=5.131&count=10000&n='.$n.'&users='.$users.'&access_token='.$this->access_token), true);
 
             if (isset($result['error']))
             {

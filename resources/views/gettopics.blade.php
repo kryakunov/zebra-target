@@ -1,12 +1,13 @@
 @extends('layout')
 
-@section('title') @parent Сбор активности в группе@endsection
-
 @section('content')
 <div class="tab">
-<div class="title">Сбор обсуждений в группе</div>
+@if(session('token'))
+<h1 class="title">Сбор обсуждений в группе</h1>
+@endif
 <div class="content">
 @include('_ScriptDesk')
+@include('partials.tool-guest-start')
 
 @include('errors.exceptions')
 @include('errors.session')
@@ -94,4 +95,5 @@
 
 
 
+@include('partials.tool-guest-end')
 @endsection

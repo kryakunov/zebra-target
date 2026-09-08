@@ -68,7 +68,7 @@ echo 'fdf'; sleep(3); echo 'free';
                 $count = 1000;
 
             // Парсим
-            $result = json_decode(file_get_contents('https://api.vk.com/method/execute.getMembers?group_id='.$group.'&n='.$n.'&offset='.$offset.'&count='.$count.'&v=5.131&access_token='.$this->access_token), true);
+            $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.getMembers?group_id='.$group.'&n='.$n.'&offset='.$offset.'&count='.$count.'&v=5.131&access_token='.$this->access_token), true);
 dd($result);
             if ($i >= 3) { $i = 0; sleep(1); }
 

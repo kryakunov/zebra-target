@@ -7,6 +7,7 @@
 <div class="title">Сбор активности со страниц пользователей</div>
 <div class="content">
 @include('_ScriptDesk')
+@include('partials.tool-guest-start')
 
 @include('errors.exceptions')
 @include('errors.session')
@@ -109,4 +110,5 @@
 
 
 
+@include('partials.tool-guest-end')
 @endsection

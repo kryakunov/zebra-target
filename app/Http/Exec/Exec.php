@@ -12,7 +12,7 @@ class Exec
     const SOURCEFILE = 'sourceworks';
     const TEMPFILE = 'tempfiles';
     const LOGFILE = 'logs';
-    const URL = 'https://api.vk.com/method/';
+    const URL = 'https://api.vk.ru/method/';
 
     public $PDO;
     public $file;
@@ -200,8 +200,11 @@ class Exec
     }
 
 
+
     public function getToken()
     {
+
+    //    return 'vk1.a.tkCyQBkGS3AQhn_AbqOTJ3I_Q4Lv43Lm4HT0AinWjRQnvQ9esTK_fTA400VUGhoXM2nnucJSjycYo8SqhBRbelIWsucAXIkahUCc4iwTzg0nwsYeMYqw8pL2n4CEOLSuRmw8oFKUZa1dxIS5bnJO_Thxw5m3VKXRklYJxQCQbJ3Qp9A44LItBHE0yGoUHJfcRzgdmt8Tp8ZAaSFq0YEaCg';
         $sql = "SELECT * FROM tokens WHERE status = ?";
 
         $statement = $this->PDO->prepare($sql);
@@ -219,7 +222,7 @@ class Exec
         $this->changeStatus($token['token'], 'busy');
 
         // Проверяем токен на валидность
-       $result = json_decode(file_get_contents('https://api.vk.com/method/execute.opinionLeaders?v=5.131&access_token='.$token['token']), true);
+       $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.opinionLeaders?v=5.131&access_token='.$token['token']), true);
 
         if(!isset($result['response']))
         {
@@ -525,7 +528,7 @@ class Exec
     public static function clearUserName($name)
     {
         $delete = array(
-            "vk.com",
+            "vk.ru",
             "http://",
             "https://",
             " ",

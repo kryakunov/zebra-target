@@ -162,7 +162,7 @@ class NewMembersController extends ExecController
 
             if (isset($result['exceptions'])){
                 if($result['exceptions'][0] == "Access denied: group hide members")
-                    $exceptions[] = 'В сообществе  vk.com/club' . $group . ' скрыты участники';
+                    $exceptions[] = 'В сообществе  vk.ru/club' . $group . ' скрыты участники';
                 else
                     $exceptions = array_merge($exceptions, $result['exceptions']);
 
@@ -198,7 +198,7 @@ class NewMembersController extends ExecController
     {
         if (++$this->pause > 2) { $this->pause = 0; sleep(1); }
 
-        $result = json_decode(file_get_contents('https://api.vk.com/method/groups.getById?group_id='.$group.'&v=5.131&access_token='.session('token')), true);
+        $result = json_decode(file_get_contents('https://api.vk.ru/method/groups.getById?group_id='.$group.'&v=5.131&access_token='.session('token')), true);
 
         $groups['name'] = $result['response'][0]['name'];
         $groups['photo'] = $result['response'][0]['photo_50'];
@@ -227,7 +227,7 @@ class NewMembersController extends ExecController
 
         $newMembers = $this->check($track_id);
 
-        $result = json_decode(file_get_contents('https://api.vk.com/method/groups.getById?group_id='.$track_id.'&v=5.131&access_token='.session('token')), true);
+        $result = json_decode(file_get_contents('https://api.vk.ru/method/groups.getById?group_id='.$track_id.'&v=5.131&access_token='.session('token')), true);
 
         $group['name'] = $result['response'][0]['name'];
         $group['photo'] = $result['response'][0]['photo_50'];
@@ -296,7 +296,7 @@ class NewMembersController extends ExecController
     $data = [];
     $i = 0;
     $offset = 0;
-    $result = json_decode(file_get_contents('https://api.vk.com/method/groups.getMembers?group_id='.$group.'&offset='.$offset.'&count=1000&v=5.131&access_token='.$token), true);
+    $result = json_decode(file_get_contents('https://api.vk.ru/method/groups.getMembers?group_id='.$group.'&offset='.$offset.'&count=1000&v=5.131&access_token='.$token), true);
 
     if (isset($result['error'])) {
         $data['exceptions'][0] = $result['error']['error_msg'];
@@ -308,7 +308,7 @@ class NewMembersController extends ExecController
     $count = $result['response']['count'];
 
     do{
-        $result = json_decode(file_get_contents('https://api.vk.com/method/execute.getMembersOld?group_id='.$group.'&offset='.$offset.'&count=1000&v=5.131&access_token='.$token), true);
+        $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.getMembersOld?group_id='.$group.'&offset='.$offset.'&count=1000&v=5.131&access_token='.$token), true);
 
         if (isset($result['error'])) {
             $data['exceptions'] = $result['error']['error_msg'];

@@ -71,7 +71,7 @@ class GetPromoPosts extends Exec
             if (strlen((int)$group) != strlen($group))
             {
                 $this->pause();
-                $result = json_decode(file_get_contents("https://api.vk.com/method/execute.getGroupsId?ids=".$group."&count=1&v=5.131&access_token=".$this->access_token), true);
+                $result = json_decode(file_get_contents("https://api.vk.ru/method/execute.getGroupsId?ids=".$group."&count=1&v=5.131&access_token=".$this->access_token), true);
 
                 // Обрабатываем ошибки
                 if (!isset($result['response']))
@@ -94,7 +94,7 @@ class GetPromoPosts extends Exec
                         $this->pause();
                         $this->access_token = $this->getToken();
                         $this->setLog('Сменил токен');
-                        $result = json_decode(file_get_contents("https://api.vk.com/method/execute.getGroupsId?ids=".$group."&count=1&v=5.131&access_token=".$this->access_token), true);
+                        $result = json_decode(file_get_contents("https://api.vk.ru/method/execute.getGroupsId?ids=".$group."&count=1&v=5.131&access_token=".$this->access_token), true);
 
                         if (isset($result['response'])) $error = false;
 

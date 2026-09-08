@@ -1,12 +1,13 @@
 @extends('layout')
 
-@section('title') @parent Анализ аудитории сообщества @endsection
-
 @section('content')
 <div class="tab">
-<div class="title">Анализ аудитории сообщества</div>
+@if(session('token'))
+<h1 class="title">Анализ аудитории сообщества</h1>
+@endif
 <div class="content">
 @include('_ScriptDesk')
+@include('partials.tool-guest-start')
 
 @include('errors.exceptions')
 @include('errors.validate')
@@ -61,4 +62,5 @@ echo "<br><br> Статистика по семейному положению: 
 
 
 
+@include('partials.tool-guest-end')
 @endsection

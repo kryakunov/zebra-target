@@ -19,6 +19,10 @@ class GetActivityPostsController extends ExecController
 
 	public function show() 
     {
+        if (!$this->isVkAuthenticated()) {
+            return view('getactivityposts');
+        }
+
         $work = $this->getWork();
 
 		if ($work) {

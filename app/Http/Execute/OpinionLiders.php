@@ -53,7 +53,7 @@ class OpinionLiders extends Execute
 
             $users = implode(',', $users);
 
-            $result = json_decode(file_get_contents('https://api.vk.com/method/execute.lidersGet?v=5.131&count=10000&n='.$n.'&users='.$users.'&access_token='.$this->access_token), true);
+            $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.lidersGet?v=5.131&count=10000&n='.$n.'&users='.$users.'&access_token='.$this->access_token), true);
 
             // Обрабатываем ошибки
             if (!isset($result['response']))
@@ -84,7 +84,7 @@ class OpinionLiders extends Execute
                     $this->pause();
                     $this->access_token = $this->getToken();
                     $this->setLog('Сменил токен');
-                    $result = json_decode(file_get_contents('https://api.vk.com/method/execute.lidersGet?v=5.131&count=10000&n='.$n.'&users='.$users.'&access_token='.$this->access_token), true);
+                    $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.lidersGet?v=5.131&count=10000&n='.$n.'&users='.$users.'&access_token='.$this->access_token), true);
 
                     if (isset($result['response'])) $error = false;
 

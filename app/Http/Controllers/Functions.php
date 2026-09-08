@@ -9,7 +9,7 @@ class Functions
     {
         $delete = [
             "/club",
-            "vk.com",
+            "vk.ru",
             "http://",
             "https://",
             "/public",

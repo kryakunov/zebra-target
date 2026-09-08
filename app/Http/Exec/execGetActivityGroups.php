@@ -48,7 +48,7 @@ class GetActivityGroups extends Exec
 
             // Получаем ID групп
             $this->pause();
-            $result = json_decode(file_get_contents('https://api.vk.com/method/execute.getGroupsId?ids='.$ids.'&count='.$count.'&v=5.131&access_token='.$this->access_token), true);
+            $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.getGroupsId?ids='.$ids.'&count='.$count.'&v=5.131&access_token='.$this->access_token), true);
 
             // Обрабатываем ошибки
             if (!isset($result['response']))
@@ -71,7 +71,7 @@ class GetActivityGroups extends Exec
                     $this->pause();
                     $this->access_token = $this->getToken();
                     $this->setLog('Сменил токен');
-                    $result = json_decode(file_get_contents('https://api.vk.com/method/execute.getGroupsId?ids='.$ids.'&count='.$count.'&v=5.131&access_token='.$this->access_token), true);
+                    $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.getGroupsId?ids='.$ids.'&count='.$count.'&v=5.131&access_token='.$this->access_token), true);
 
                     if (isset($result['response'])) $error = false;
 
@@ -759,7 +759,7 @@ class GetActivityGroups extends Exec
     public function vkapi($method, $params)
     {
         $params = http_build_query($params);
-        $result = json_decode(file_get_contents('https://api.vk.com/method/'. $method .'?' . $params), true);
+        $result = json_decode(file_get_contents('https://api.vk.ru/method/'. $method .'?' . $params), true);
 
         if (isset($result['response']))
             return $result['response'];
@@ -867,7 +867,7 @@ class GetActivityGroups extends Exec
                             $this->pause();
 
                             // Запрашиваем лайки (макс может вернуть 25 000 за раз)
-                            $result = json_decode(file_get_contents('https://api.vk.com/method/execute.getLikes?item_id='.$item_id.'&owner_id='.$owner_id.'&count='.$count.'&offset='.$offset.'&v=5.131&access_token='.$this->access_token), true);
+                            $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.getLikes?item_id='.$item_id.'&owner_id='.$owner_id.'&count='.$count.'&offset='.$offset.'&v=5.131&access_token='.$this->access_token), true);
 
                             $offset += 25000;
 
@@ -903,7 +903,7 @@ class GetActivityGroups extends Exec
                             $this->pause();
 
                             // Запрашиваем лайки (макс может вернуть 2500 за раз)
-                            $result = json_decode(file_get_contents('https://api.vk.com/method/execute.getComments?post_id='.$post_id.'&owner_id='.$owner_id.'&count='.$count.'&offset='.$offset.'&v=5.131&access_token='.$this->access_token), true);
+                            $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.getComments?post_id='.$post_id.'&owner_id='.$owner_id.'&count='.$count.'&offset='.$offset.'&v=5.131&access_token='.$this->access_token), true);
 
                             $offset += 2500;
 

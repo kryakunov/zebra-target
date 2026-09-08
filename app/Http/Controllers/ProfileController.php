@@ -258,7 +258,7 @@ class ProfileController extends Controller
 
             $request_params['group_ids'] = $ids;
             $get_params = http_build_query($request_params);
-            $data = json_decode(file_get_contents('https://api.vk.com/method/groups.getById?' . $get_params), true);
+            $data = json_decode(file_get_contents('https://api.vk.ru/method/groups.getById?' . $get_params), true);
 
             if (isset($data['response']))
                 $groups = array_merge($groups, $data['response']);

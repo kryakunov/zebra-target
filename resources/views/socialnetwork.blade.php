@@ -1,12 +1,13 @@
 @extends('layout')
 
-@section('title') @parent Мои задачи @endsection
-
 @section('content')
     <div class="tab">
-    <div class="title">Сбор социальных сетей</div>
+    @if(session('token'))
+<h1 class="title">Сбор социальных сетей</h1>
+@endif
     <div class="content">
 @include('_ScriptDesk')
+@include('partials.tool-guest-start')
 
 @include('errors.session')
 @include('errors.exceptions')
@@ -99,6 +100,7 @@
     </div>
 @endif
 
+@include('partials.tool-guest-end')
 @endsection
 
 

@@ -189,7 +189,7 @@ class GetMembersController extends Controller
     public function howManyMembers($groups)
     {
         $ids = implode(",", $groups);
-        $result = json_decode(file_get_contents('https://api.vk.com/method/groups.getById?v=5.126&fields=members_count,type&group_ids='.$ids.'&access_token='.session('token')), true);
+        $result = json_decode(file_get_contents('https://api.vk.ru/method/groups.getById?v=5.126&fields=members_count,type&group_ids='.$ids.'&access_token='.session('token')), true);
 
         $membersCount = 0;
 

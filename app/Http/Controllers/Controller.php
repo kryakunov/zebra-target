@@ -14,6 +14,11 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    protected function isVkAuthenticated(): bool
+    {
+        return (bool) session('token');
+    }
+
     public function checkWork()
     {
         if (isset($_GET['id'])) 

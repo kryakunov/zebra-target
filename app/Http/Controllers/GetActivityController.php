@@ -103,7 +103,7 @@ class GetActivityController extends ExecController
             $ids = implode(',', $group);
 
             // Получаем ID групп
-            $result = json_decode(file_get_contents('https://api.vk.com/method/execute.getGroupsId?ids='.$ids.'&count='.$count.'&v=5.131&access_token='.session('token')), true);
+            $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.getGroupsId?ids='.$ids.'&count='.$count.'&v=5.131&access_token='.session('token')), true);
 
             if(!$result or !isset($result['response'])) continue;
 

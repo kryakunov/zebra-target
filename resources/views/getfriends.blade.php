@@ -7,6 +7,7 @@
 <div class="title">Сбор друзей и подписчиков</div>
 <div class="content">
 @include('_ScriptDesk')
+@include('partials.tool-guest-start')
 
 @include('errors.exceptions')
 @include('errors.session')
@@ -58,4 +59,5 @@
 @endif
 
 
+@include('partials.tool-guest-end')
 @endsection

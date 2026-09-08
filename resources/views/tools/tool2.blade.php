@@ -1,12 +1,13 @@
 @extends('layout')
 
-@section('title') @parent Поиск общих элементов @endsection
-
 @section('content')
 <div class="tab">
-<div class="title">Поиск общих элементов</div>
+@if(session('token'))
+<h1 class="title">Поиск общих элементов</h1>
+@endif
 <div class="content">
 @include('_ScriptDesk')
+@include('partials.tool-guest-start')
 
 
 <form action="{{route('tool2Post')}}" method="post" class="mb-4">
@@ -54,4 +55,5 @@
 @endif
 
 
+@include('partials.tool-guest-end')
 @endsection

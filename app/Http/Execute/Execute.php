@@ -66,7 +66,7 @@ class Execute
     const SOURCEFILE = 'samples';
     const TEMPFILE = 'tempfiles';
     const LOGFILE = 'samplelogs';
-    const URL = 'https://api.vk.com/method/';
+    const URL = 'https://api.vk.ru/method/';
 
 
     public $PDO;
@@ -278,7 +278,7 @@ class Execute
         $this->changeStatus($token['token'], 'busy');
 
         // Проверяем токен на валидность
-       $result = json_decode(file_get_contents('https://api.vk.com/method/execute.opinionLeaders?v=5.131&access_token='.$token['token']), true);
+       $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.opinionLeaders?v=5.131&access_token='.$token['token']), true);
 
         if(!isset($result['response']))
         {
@@ -641,7 +641,7 @@ class Execute
     public static function clearUserName($name)
     {
         $delete = array(
-            "vk.com",
+            "vk.ru",
             "http://",
             "https://",
             " ",

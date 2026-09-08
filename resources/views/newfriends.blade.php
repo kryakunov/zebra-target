@@ -55,7 +55,7 @@
                 @forelse($users as $user)
                       <tr>
                         <td width="30"><img src="{{$user['photo']}}" width="30" class="circle"> </td>
-                        <td><a href="http://vk.com/id{{$user['id']}}"  class='ShowGroupName' target="_blank">{{$user['first_name']}} {{$user['last_name']}}</a></td>
+                        <td><a href="http://vk.ru/id{{$user['id']}}"  class='ShowGroupName' target="_blank">{{$user['first_name']}} {{$user['last_name']}}</a></td>
                         <td class='payment'><a href="{{route('NewFriendsGet', ['id' => $user['id']])}}">{{($user['new_friends'] > 0) ? $user['new_friends'] : ''}}</a></td>
                         <td class='payment'><a href="{{route('DelFriendsGet', ['id' => $user['id']])}}">{{($user['delete_friends'] > 0) ? $user['delete_friends'] : ''}}</a></td>
                         <td class='ShowGroupDesc'>{{date("d.m", strtotime($user['created_at']))}}</td>
@@ -87,7 +87,7 @@
     <div class="d-flex flex-row">
         <div class="p-1"><img src="{{$user['photo']}}" width="60" class="circle"></div>
         <div class="p-2">
-            <a href="http://vk.com/id{{$user['id']}}"  class='ShowGroupName' target="_blank">{{$user['first_name']}} {{$user['last_name']}}</a>
+            <a href="http://vk.ru/id{{$user['id']}}"  class='ShowGroupName' target="_blank">{{$user['first_name']}} {{$user['last_name']}}</a>
             <div class="ShowGroupDesc"  style="margin-top: 10px">Новых друзей: <a  class="new-friends" href="{{route('NewFriendsGet', ['id' => $user['id']])}}">{{($user['new_friends'] > 0) ? $user['new_friends'] : '0'}}</a></div>
             <div class="ShowGroupDesc">Удаленных: <a class="new-friends"  href="{{route('DelFriendsGet', ['id' => $user['id']])}}">{{($user['delete_friends'] > 0) ? $user['delete_friends'] : '0'}}</a></div>
 

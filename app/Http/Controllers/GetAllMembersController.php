@@ -135,7 +135,7 @@ class GetAllMembersController extends ExecController
             $ids = implode(',', $value);
 
             // Получаем ID групп
-            $result = json_decode(file_get_contents('https://api.vk.com/method/execute.getGroupsId?ids='.$ids.'&count='.$count.'&v=5.131&access_token='.session('token')), true);
+            $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.getGroupsId?ids='.$ids.'&count='.$count.'&v=5.131&access_token='.session('token')), true);
 
             if(!$result or !isset($result['response'])) continue;
 
@@ -144,7 +144,7 @@ class GetAllMembersController extends ExecController
 
             // Ищем только те группы где не скрыты участники
             $this->pause();
-            $result = json_decode(file_get_contents('https://api.vk.com/method/execute.isHiddenMembers?ids='.$ids.'&count='.$count.'&v=5.131&access_token='.session('token')), true);
+            $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.isHiddenMembers?ids='.$ids.'&count='.$count.'&v=5.131&access_token='.session('token')), true);
 
             if(!$result or !isset($result['response'])) continue;
 
@@ -167,7 +167,7 @@ class GetAllMembersController extends ExecController
         // Делаем запрос к АПИ и узнаем кол-во участников
         $ids = implode(",", $data);
         $this->pause();
-        $result = json_decode(file_get_contents('https://api.vk.com/method/groups.getById?v=5.126&fields=members_count,type&group_ids='.$ids.'&access_token='.session('token')), true);
+        $result = json_decode(file_get_contents('https://api.vk.ru/method/groups.getById?v=5.126&fields=members_count,type&group_ids='.$ids.'&access_token='.session('token')), true);
 
         // Вычисляем общее кол-во участников групп
         if (isset($result['response'][0]['members_count'])) {

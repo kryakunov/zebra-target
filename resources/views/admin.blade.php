@@ -81,7 +81,7 @@
 <br>
 @if (isset($user))
 
-        <a href="http://vk.com/id{{$user['vk_id']}}" target="_blank" class="nodecoration">
+        <a href="http://vk.ru/id{{$user['vk_id']}}" target="_blank" class="nodecoration">
             <img src="{{$user['photo']}}" width="50" class="circle"> {{$user['first_name']}} {{$user['last_name']}}
         </a>
 
@@ -127,7 +127,7 @@
               <td class='align-middle'>
                 <input type='text' maxlength='42' size='12' name='ref' class='textbox margin' value='<?=$user['ref']?>' aria-describedby='button-addon2' />
                 @if(isset($ref))
-                  <a href="http://vk.com/id{{$ref['vk_id']}}" class="nodecoration" target="_blank"><img src="{{$ref['photo']}}" width="35" class="circle"> {{$ref['first_name']}}  {{$ref['last_name']}}</a>
+                  <a href="http://vk.ru/id{{$ref['vk_id']}}" class="nodecoration" target="_blank"><img src="{{$ref['photo']}}" width="35" class="circle"> {{$ref['first_name']}}  {{$ref['last_name']}}</a>
                 @endif
                 </tr>
             <tr>
@@ -163,7 +163,7 @@
                     continue;
                 @endphp
             <div class="new-users action">
-            <a href="http://vk.com/id{{$last_user['vk_id']}}" target="_blank">
+            <a href="http://vk.ru/id{{$last_user['vk_id']}}" target="_blank">
                 <img src="{{$last_user['photo']}}" width="50" class="circle"> <br>
 
 
@@ -205,7 +205,7 @@
     @if(isset($new_users))
         @foreach($new_users as $new_user)
             <div class="new-users action">
-            <a href="http://vk.com/id{{$new_user['vk_id']}}" target="_blank">
+            <a href="http://vk.ru/id{{$new_user['vk_id']}}" target="_blank">
                 <img src="{{$new_user['photo']}}" width="50" class="circle"> <br>
                 @if($new_user['access'] > time())
                     <span style="color: green;">{{$new_user['first_name']}}<br> {{$new_user['last_name']}}</span>
@@ -286,8 +286,8 @@
                     <tr>
                         <td width='5%'><img src="{{$payment['photo']}}" class="circle"> </td>
                         <td>
-                            <a href="https://vk.com/id{{$payment['vk_id'] }}" class='ShowGroupName' target='_blank'>{{ $payment['first_name'] .' '. $payment['last_name']}}</a>
-                            <br><?php if ($payment['ref'] !== null) echo "<a href=https://vk.com/id".$payment['ref']['vk_id']." class='ShowGroupName'><img src=".$payment['ref']['photo']." class=circle width=30 height=30> <small>" . $payment['ref']['first_name'].' '.$payment['ref']['last_name'].'</a></small>';?>
+                            <a href="https://vk.ru/id{{$payment['vk_id'] }}" class='ShowGroupName' target='_blank'>{{ $payment['first_name'] .' '. $payment['last_name']}}</a>
+                            <br><?php if ($payment['ref'] !== null) echo "<a href=https://vk.ru/id".$payment['ref']['vk_id']." class='ShowGroupName'><img src=".$payment['ref']['photo']." class=circle width=30 height=30> <small>" . $payment['ref']['first_name'].' '.$payment['ref']['last_name'].'</a></small>';?>
                         </td>
                         <td class='ShowGroupName'>{{$payment['vk_id']}}</td>
                         <td class='ShowGroupName'>{{$payment['package']}}</td>
@@ -312,7 +312,7 @@
 <div class="between">
     @if(isset($users))
     @foreach($users as $user)
-        <a href="https://vk.com/id{{$user['vk_id']}}" target="_blank" class="new-users ShowGroupName">
+        <a href="https://vk.ru/id{{$user['vk_id']}}" target="_blank" class="new-users ShowGroupName">
             <img src="{{$user['photo']}}" class="circle"> <br>{{$user['first_name']}}<br> {{$user['last_name']}}
         </a>
     @endforeach

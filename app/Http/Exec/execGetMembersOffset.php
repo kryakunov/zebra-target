@@ -62,7 +62,7 @@ class GetMembers
         if (!$token) return false;
         sleep(1);
         // Проверяем токен на валидность
-        $result = json_decode(file_get_contents('https://api.vk.com/method/users.get?v=5.131&access_token='.$token['token']), true);
+        $result = json_decode(file_get_contents('https://api.vk.ru/method/users.get?v=5.131&access_token='.$token['token']), true);
         if(!isset($result['response']))
         {
             $this->changeStatus($token['token'], 'no valid');
@@ -205,7 +205,7 @@ class GetMembers
                 $count = 1000;
 
             // Парсим
-            $result = json_decode(file_get_contents('https://api.vk.com/method/execute.getMembers?group_id='.$group.'&n='.$n.'&offset='.$offset.'&count='.$count.'&v=5.131&access_token='.$this->access_token), true);
+            $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.getMembers?group_id='.$group.'&n='.$n.'&offset='.$offset.'&count='.$count.'&v=5.131&access_token='.$this->access_token), true);
 
             if ($i >= 3) { $i = 0; sleep(1); }
 
@@ -276,7 +276,7 @@ class GetMembers
 
             // Делаем запрос к VK API
             $get_params = http_build_query($request_params);
-            $result = json_decode(file_get_contents('https://api.vk.com/method/groups.getMembers?'. $get_params), true);
+            $result = json_decode(file_get_contents('https://api.vk.ru/method/groups.getMembers?'. $get_params), true);
 
             // В случае ошибки
             if (isset($result['error']))
@@ -328,7 +328,7 @@ class GetMembers
             $this->tempFile = '../storage/app/getmembers/tempfiles/'.$this->workId.'_'.$group.'.txt';
 
             // Узнаем сколько участников в сообществе
-            $result = json_decode(file_get_contents('https://api.vk.com/method/groups.getMembers?group_id='.$group.'&offset=0&count=1000&v=5.131&access_token='.$this->access_token), true);
+            $result = json_decode(file_get_contents('https://api.vk.ru/method/groups.getMembers?group_id='.$group.'&offset=0&count=1000&v=5.131&access_token='.$this->access_token), true);
 
             // Если участники сообщества скрыты то прерывает итерацию цикла
             if (isset($result['error'])) {

@@ -1,12 +1,13 @@
 @extends('layout')
 
-@section('title') @parent Расширенный фильтр пользователей @endsection
-
 @section('content')
 <div class="tab">
-<div class="title">Расширенный фильтр пользователей</div>
+@if(session('token'))
+<h1 class="title">Расширенный фильтр пользователей</h1>
+@endif
 <div class="content">
 @include('_ScriptDesk')
+@include('partials.tool-guest-start')
 
 @include('errors.exceptions')
 @include('errors.session')
@@ -102,4 +103,5 @@
 
 
 
+@include('partials.tool-guest-end')
 @endsection

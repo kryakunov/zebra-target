@@ -52,7 +52,7 @@ class UserController extends Controller
 		    //$result = Functions::vkapi('groups.get', $request_params);
 
             $params = http_build_query($request_params);
-            $result = json_decode(file_get_contents('https://api.vk.com/method/groups.get?' . $params), true);
+            $result = json_decode(file_get_contents('https://api.vk.ru/method/groups.get?' . $params), true);
 
             if (isset($result['response'])) {
                 $result = $result['response'];

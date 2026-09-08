@@ -1,16 +1,22 @@
 @extends('layout')
 
-@section('title') @parent @endsection
+@section('title', isset($seo['title']) ? $seo['title'] : ($page->type_name . ' — Зебра Таргет'))
+@section('description', isset($seo['description']) ? $seo['description'] : '')
 
 @section('content')
 <div class="tab">
-<div class="title"> {{ $page->type_name }} </div>
+@if(session('token'))
+<h1 class="title">{{ $page->type_name }}</h1>
+@endif
 <div class="content">
 
 @include('_ScriptDesk')
 @include('errors.session')
 @include('errors.exceptions')
 
+@if(!session('token'))
+    @include('partials.tool-landing')
+@else
 <form action="{{ route(mb_strtolower($page->type)) }}" method="post" class="mb-4">
 @csrf
 
@@ -37,7 +43,7 @@
 &nbsp; 
 Создать задачу</button>
 </form> 
-
+@endif
 
 </div></div>
 @endsection

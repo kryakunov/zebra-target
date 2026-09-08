@@ -18,6 +18,10 @@ class SocialNetworksController extends ExecController
     
     public function show()
     {
+        if (!$this->isVkAuthenticated()) {
+            return view('socialnetwork', ['request' => []]);
+        }
+
         $work = $this->getWork();
 
 		if ($work) {

@@ -6,6 +6,8 @@ use App\mywork;
 use Illuminate\Support\Facades\Route;
 use App\User;
 use App\authtoken;
+use App\Services\SeoService;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 
@@ -29,6 +31,15 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Paginator::defaultView('vendor.pagination.bootstrap-4');
+
+        Blade::if('vkauth', function () {
+            return (bool) session('token');
+        });
+
+        view()->composer(['layout', 'layout-min', 'forms.layout', 'partials.seo-meta', 'partials.tool-landing'], function ($view) {
+            $view->with('seo', app(SeoService::class)->forCurrentRoute());
+            $view->with('isVkAuth', (bool) session('token'));
+        });
 
         if (isset($_GET['r'])) 
         {

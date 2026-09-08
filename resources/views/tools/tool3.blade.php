@@ -1,12 +1,13 @@
 @extends('layout')
 
-@section('title') @parent Вычесть элементы из списка @endsection
-
 @section('content')
 <div class="tab">
-<div class="title">Вычесть элементы из списка</div>
+@if(session('token'))
+<h1 class="title">Вычесть элементы из списка</h1>
+@endif
 <div class="content">
 @include('_ScriptDesk')
+@include('partials.tool-guest-start')
 
 
 <form action="{{route('tool3Post')}}" method="post" class="mb-4">
@@ -56,4 +57,5 @@
 @endif
 
 
+@include('partials.tool-guest-end')
 @endsection

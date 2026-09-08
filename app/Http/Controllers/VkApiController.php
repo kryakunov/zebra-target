@@ -234,7 +234,7 @@ class VkApiController extends Controller
 
         function vkapi($method, $params) {
             $params = http_build_query($params);
-            $result = json_decode(file_get_contents('https://api.vk.com/method/'. $method .'?' . $params), true);
+            $result = json_decode(file_get_contents('https://api.vk.ru/method/'. $method .'?' . $params), true);
 
 			if (isset($result['response'])) {
             	return $result['response'];
@@ -366,7 +366,7 @@ class VkApiController extends Controller
 		$user_id = Functions::clearGroupName($request->input('group'));
 
 		// Формируем ссылку для запроса к ВК АПИ
-		$url = "https://api.vk.com/method/groups.getMembers?group_id=" . $user_id .
+		$url = "https://api.vk.ru/method/groups.getMembers?group_id=" . $user_id .
 		"&offset=0&fields=sex,has_photo,can_write_private_message,relation,is_closed,bdate&v=5.131&access_token=" . session('token');
 
 		$result = json_decode(file_get_contents($url),true); // Делаем запрос к ВК АПИ
@@ -478,7 +478,7 @@ class VkApiController extends Controller
 		$offset = $offset + 1000;
 		$slp++;
 
-		$url = "https://api.vk.com/method/groups.getMembers?group_id=" . $user_id . "&fields=sex,has_photo,can_write_private_message,relation,is_closed,bdate&offset=" . $offset . "&v=5.131&access_token=" . session('token');
+		$url = "https://api.vk.ru/method/groups.getMembers?group_id=" . $user_id . "&fields=sex,has_photo,can_write_private_message,relation,is_closed,bdate&offset=" . $offset . "&v=5.131&access_token=" . session('token');
 
 		$result = json_decode(file_get_contents($url),true); // Делаем запрос к ВК АПИ
     	$result = $result['response']['items'];  // В переменную result получаем весь массив данных о пользователях

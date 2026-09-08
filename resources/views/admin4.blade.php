@@ -23,7 +23,7 @@
                 @foreach($partners as $partner)
                     <tr>
                         <td class='ShowGroupName'>
-                            <a href="http://vk.com/id{{$partner['vk_id']}}" target="_blank" class="nodecoration">
+                            <a href="http://vk.ru/id{{$partner['vk_id']}}" target="_blank" class="nodecoration">
                                 <img src="{{$partner['photo']}}" width="50" class="circle"> {{$partner['first_name']}} {{$partner['last_name']}}
                             </a>
                         </td>

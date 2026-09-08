@@ -39,7 +39,7 @@ echo "<div class='desc_script'><p class='how_script'>Как работает э�
 
                 <p><label><input name="result_format" type="radio" value="vk_com_id"
                  <?php if ($_POST['result_format'] == 'vk_com_id') echo 'checked'; ?> >
-			Ссылки вида vk.com/club12345...</label></p>
+			Ссылки вида vk.ru/club12345...</label></p>
 
                 <p><label><input name="result_format" type="radio" value="names"
                  <?php if ($_POST['result_format'] == 'names') echo 'checked'; ?> >
@@ -103,7 +103,7 @@ do {
     $textarea[$c] = str_replace(" ", "", $textarea[$c]);
     $textarea[$c] = preg_replace('/\r \n|\r|\n/u', '', $textarea[$c]);
 if (!is_numeric($textarea[$c])) continue;
-        $url = "https://api.vk.com/method/groups.get?user_id=".$textarea[$c]."&v=5.52&count=1000&filter=".$type."&extended=1&access_token=" . $_SESSION['token'];
+        $url = "https://api.vk.ru/method/groups.get?user_id=".$textarea[$c]."&v=5.52&count=1000&filter=".$type."&extended=1&access_token=" . $_SESSION['token'];
         $result = json_decode(file_get_contents($url),true);
         $people = $result['response']['count']; // В переменную people записываем сколько всего  человек состоит в группе
         $result = $result['response']['items']; // В переменную result получаем весь массив данных о пользователях
@@ -123,12 +123,12 @@ if (!is_numeric($textarea[$c])) continue;
         switch ($_POST['result_format']) {
 
         case 'id': foreach ($result as $value)  {   $itog[] =  $value['id'];  } break;
-        case 'vk_com_id': foreach ($result as $value)  {  $itog[] =  'vk.com/club'.$value['id'];     } break;
+        case 'vk_com_id': foreach ($result as $value)  {  $itog[] =  'vk.ru/club'.$value['id'];     } break;
         case 'names': foreach ($result as $value)  {  $itog[] =  $value['name'];     } break;
-        case 'name_id': foreach ($result as $value)  {  $itog[] =  $value['name']." | vk.com/club".$value['id'];     } break;
+        case 'name_id': foreach ($result as $value)  {  $itog[] =  $value['name']." | vk.ru/club".$value['id'];     } break;
 
         case 'photo':  foreach ($result as $value)  {
-           $itog[] = '<a href=https://vk.com/club'.$value['id'].' target=blank><img src='.$value['photo_50'].' class=vk-user-photo-left width=50 height=50></a> ';     }  break;
+           $itog[] = '<a href=https://vk.ru/club'.$value['id'].' target=blank><img src='.$value['photo_50'].' class=vk-user-photo-left width=50 height=50></a> ';     }  break;
         }
 
 
@@ -192,22 +192,22 @@ if ($_SESSION['access'] == '0')
 
     switch ($_POST['result_format']) {
     case 'id': foreach ($result as $value)  {   echo $value['id'] . "\n"; $i++; if ($i > 15) break; } break;
-    case 'vk_com_id': foreach ($result as $value)  {  echo 'vk.com/club'.$value['id'] . "\n";  $i++; if ($i > 15) break;   } break;
+    case 'vk_com_id': foreach ($result as $value)  {  echo 'vk.ru/club'.$value['id'] . "\n";  $i++; if ($i > 15) break;   } break;
     case 'names': foreach ($result as $value)  {  echo $value['name'] . "\n";   $i++; if ($i > 15) break;  } break;
-    case 'name_id': foreach ($result as $value)  {  echo $value['name']." | vk.com/club".$value['id'] . "\n";  $i++; if ($i > 15) break;   } break;
+    case 'name_id': foreach ($result as $value)  {  echo $value['name']." | vk.ru/club".$value['id'] . "\n";  $i++; if ($i > 15) break;   } break;
     case 'photo': echo "</textarea>".count($result)." групп <div class='newenter_group'>"; foreach ($result as $value)  {
-        echo '<a href=https://vk.com/club'.$value['id'].' target=blank><img src='.$value['photo_50'].' class=vk-user-photo-left width=50 height=50></a> ' . "\n";   $i++; if ($i > 15) break;  }  echo '</div>'; break;
+        echo '<a href=https://vk.ru/club'.$value['id'].' target=blank><img src='.$value['photo_50'].' class=vk-user-photo-left width=50 height=50></a> ' . "\n";   $i++; if ($i > 15) break;  }  echo '</div>'; break;
     }
 
 } else {
 
         switch ($_POST['result_format']) {
     case 'id': foreach ($result as $value)  {   echo $value['id'] . "\n";  } break;
-    case 'vk_com_id': foreach ($result as $value)  {  echo 'vk.com/club'.$value['id'] . "\n";     } break;
+    case 'vk_com_id': foreach ($result as $value)  {  echo 'vk.ru/club'.$value['id'] . "\n";     } break;
     case 'names': foreach ($result as $value)  {  echo $value['name'] . "\n";     } break;
-    case 'name_id': foreach ($result as $value)  {  echo $value['name']." | vk.com/club".$value['id'] . "\n";     } break;
+    case 'name_id': foreach ($result as $value)  {  echo $value['name']." | vk.ru/club".$value['id'] . "\n";     } break;
     case 'photo': echo "</textarea>".count($result)." групп <div class='newenter_group'>"; foreach ($result as $value)  {
-        echo '<a href=https://vk.com/club'.$value['id'].' target=blank><img src='.$value['photo_50'].' class=vk-user-photo-left width=50 height=50></a> ' . "\n";     }  echo '</div>'; break;
+        echo '<a href=https://vk.ru/club'.$value['id'].' target=blank><img src='.$value['photo_50'].' class=vk-user-photo-left width=50 height=50></a> ' . "\n";     }  echo '</div>'; break;
     }
 
 }

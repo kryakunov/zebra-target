@@ -53,7 +53,7 @@ class GetActivityUser extends Exec
 
             // Получаем ID групп
             $this->pause();
-            $result = json_decode(file_get_contents('https://api.vk.com/method/execute.getGroupsId?ids='.$ids.'&count='.$count.'&v=5.131&access_token='.$this->access_token), true);
+            $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.getGroupsId?ids='.$ids.'&count='.$count.'&v=5.131&access_token='.$this->access_token), true);
 
             // Обрабатываем ошибки
             if (!isset($result['response']))
@@ -76,7 +76,7 @@ class GetActivityUser extends Exec
                     $this->pause();
                     $this->access_token = $this->getToken();
                     $this->setLog('Сменил токен');
-                    $result = json_decode(file_get_contents('https://api.vk.com/method/execute.getGroupsId?ids='.$ids.'&count='.$count.'&v=5.131&access_token='.$this->access_token), true);
+                    $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.getGroupsId?ids='.$ids.'&count='.$count.'&v=5.131&access_token='.$this->access_token), true);
 
                     if (isset($result['response'])) $error = false;
 

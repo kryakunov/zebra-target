@@ -1,12 +1,13 @@
 @extends('layout')
 
-@section('title') @parent Сбор постов @endsection
-
 @section('content')
 <div class="tab">
-<div class="title">Сбор постов</div>
+@if(session('token'))
+<h1 class="title">Сбор постов</h1>
+@endif
 <div class="content">
 @include('_ScriptDesk')
+@include('partials.tool-guest-start')
 
 
 
@@ -120,7 +121,7 @@
 <div class="result_format mb-3">
     <label id='pointer' style="cursor: pointer"><input  style="cursor: pointer" id=radio name=result_format type=radio value='id'> ID пользователей вида: 12345</label><br>
     <label id='pointer' style="cursor: pointer"><input  style="cursor: pointer" id=radio name=result_format type=radio value='vk_id'> ID пользователей вида: id12345</label><br>
-    <label id='pointer' style="cursor: pointer"><input  style="cursor: pointer" id=radio name=result_format type=radio value='vk_com_id'> ID пользователей вида: vk.com/id12345</label>
+    <label id='pointer' style="cursor: pointer"><input  style="cursor: pointer" id=radio name=result_format type=radio value='vk_com_id'> ID пользователей вида: vk.ru/id12345</label>
 </div>-->
 
 <label class='label'>Придумайте название задачи:</label><br>
@@ -138,7 +139,7 @@
         Найдено: <b>{{count($data)}}</b>
     </div>
         <textarea class="output-panel form-control mb-2"  id="textarea" rows="12">@foreach($data as $value)<?php
-if($_POST['when_posts'] !== "3") echo "https://vk.com/wall".$value."\n";
+if($_POST['when_posts'] !== "3") echo "https://vk.ru/wall".$value."\n";
 else echo $value."\n";
 ?>
 @endforeach</textarea>
@@ -146,4 +147,5 @@ else echo $value."\n";
 @endif
 
 </div></div>
+@include('partials.tool-guest-end')
 @endsection

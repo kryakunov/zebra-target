@@ -99,7 +99,7 @@ date_default_timezone_set('Europe/Moscow');
     </div>
     <div class="col-md-3 myworkname">
         <img src="{{ $item->user->photo }}" width="35" height="35" class="circle">
-        <a href="https://vk.com/id{{$item->user->vk_id}}" target="_blank" class="ShowGroupName">{{ $item->user->first_name }} {{ $item->user->last_name }}</a><br>
+        <a href="https://vk.ru/id{{$item->user->vk_id}}" target="_blank" class="ShowGroupName">{{ $item->user->first_name }} {{ $item->user->last_name }}</a><br>
         @if(isset($logfile))
             <a href="{{ route('downloadlog', ['id' => $item->id] ) }}">Log</a>
         @endif

@@ -51,7 +51,7 @@ class FilterUsers
         if (!$token) return false;
         sleep(1);
         // Проверяем токен на валидность
-        $result = json_decode(file_get_contents('https://api.vk.com/method/users.get?v=5.131&access_token='.$token['token']), true);
+        $result = json_decode(file_get_contents('https://api.vk.ru/method/users.get?v=5.131&access_token='.$token['token']), true);
         if(!isset($result['response']))
         {
             $this->changeStatus($token['token'], 'no valid');
@@ -178,7 +178,7 @@ class FilterUsers
             $percent = (++$loading / $this->countMembers) * 100;
             $this->setPercent($percent);
 
-            $url = "https://api.vk.com/method/users.get?user_id=".$user.",&fields=counters&count=300&v=5.89&access_token=".$this->token;
+            $url = "https://api.vk.ru/method/users.get?user_id=".$user.",&fields=counters&count=300&v=5.89&access_token=".$this->token;
             $result = json_decode(file_get_contents($url),true);
             if (++$i >= 2) { sleep(1); $i = 0; }
             if (!isset($result['response'][0]['counters'])) continue;

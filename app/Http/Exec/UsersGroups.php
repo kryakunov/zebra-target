@@ -75,7 +75,7 @@ class UsersGroups
                 $i++; if ($i > 3) {sleep(1); $i = 0;}
 
                 $params = http_build_query($this->request_params);
-                $result = json_decode(file_get_contents('https://api.vk.com/method/groups.get?' . $params), true);
+                $result = json_decode(file_get_contents('https://api.vk.ru/method/groups.get?' . $params), true);
                 if (!$result) break;
 
                 if (isset($result['error']))
@@ -188,7 +188,7 @@ $ids = str_replace(array("\r\n", "\r", "\n"), '',  strip_tags($ids));
 
 $request_params['group_ids'] = $ids;
 $get_params = http_build_query($request_params);
-$data = json_decode(file_get_contents('https://api.vk.com/method/groups.getById?' . $get_params), true);
+$data = json_decode(file_get_contents('https://api.vk.ru/method/groups.getById?' . $get_params), true);
 
 $data = $data['response'];
 

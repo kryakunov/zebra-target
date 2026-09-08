@@ -34,6 +34,12 @@ Route::get('/', 'AuthController@index')->name('/');
 Route::view('guest', '_guest')->name('guest');
 
 Route::view('free-parser', 'free-parser')->name('free-parser');
+Route::get('/sitemap.xml', 'SitemapController@index')->name('sitemap');
+Route::get('/robots.txt', function () {
+    return response()->file(public_path('robots.txt'), [
+        'Content-Type' => 'text/plain; charset=UTF-8',
+    ]);
+})->name('robots');
 
 Route::post('/webhook', 'webhook@index')->name('webhook');
 Route::get('/payment-success', 'webhook@success')->name('payment-success');
@@ -49,27 +55,8 @@ Route::post('/storepaymentusers', 'AdminController@storePaymentUsers')->name('st
 
 Route::get('/worktester', 'WorkTester@handler');
 
-Route::get('/group-viewer/{id?}', 'GroupViewerController@show')->name('groupviewer');
-
-Route::get('/when-onlines', 'WhenOnlineController@show');
-Route::get('/when-onlines-delete', 'WhenOnlineController@delete');
-Route::get('/when-online-check', 'WhenOnlineController@index');
-
 Route::get('/products/admin', 'hh@admin')->name('products.admin');
 Route::resource('/products', hh::class);
-
-Route::get('/ajax', 'MyWorksController@ajax');
-Route::get('/ajaxsamples/{id?}', 'MyWorksController@ajaxSamples');
-
-Route::get('/ajaxleft', 'MyWorksController@ajaxleft');
-Route::get('/ajaxgetworks', 'MyWorksController@ajaxgetworks');
-Route::get('/ajaxgetcity', 'MyWorksController@ajaxgetcity');
-Route::get('/ajaxgetcountries', 'MyWorksController@ajaxgetcountries');
-
-Route::get('/ajaxgetuser/{name}', 'MyWorksController@ajaxgetuser');
-
-Route::get('/ajaxgetcloud', 'MyWorksController@ajaxgetcloud');
-
 
 Route::get('/clearworks', 'MyWorksController@clearWorks')->name('clearworks');
 
@@ -99,11 +86,56 @@ Route::post('/price', 'VkApiController@price')->name('price');
 // Route::get('/price', 'VkApiController@price')->name('price');
 // Route::post('/price', 'VkApiController@promo')->name('price');
 
-
+/*
+| Публичные SEO-лендинги инструментов (только GET).
+| Запуск задач и остальные действия остаются в группе authVk.
+*/
+Route::get('/filtergroups', 'WorksController@show')->name('filtergroups');
+Route::get('/getallmembers', 'WorksController@show')->name('getallmembers');
+Route::get('/getactivitygroups', 'WorksController@show')->name('getactivitygroups');
+Route::get('/getgroupcontacts', 'WorksController@show')->name('getgroupcontacts');
+Route::get('/userstargetgroups', 'WorksController@show')->name('userstargetgroups');
+Route::get('/getpromoposts', 'WorksController@show')->name('getpromoposts');
+Route::get('/getactivityposts', 'GetActivityPostsController@show')->name('getactivityposts');
+Route::get('/usersfilter', 'WorksController@show')->name('usersfilter');
+Route::get('/getactivityuser', 'WorksController@show')->name('getactivityuser');
+Route::get('/getrelatives', 'WorksController@show')->name('getrelatives');
+Route::get('/getfriends', 'WorksController@show')->name('getfriends');
+Route::get('/usersgroups', 'WorksController@show')->name('usersgroups');
+Route::get('/usersallgroups', 'WorksController@show')->name('usersallgroups');
+Route::get('/opinionliders', 'WorksController@show')->name('opinionliders');
+Route::get('/getposts', 'GetPostsController@show')->name('getposts');
+Route::get('/topfollowers', 'TopFollowersController@show')->name('topfollowers');
+Route::get('/socialnetworks', 'SocialNetworksController@show')->name('socialnetworks');
+Route::get('/gettopics', 'GetTopicsController@show')->name('gettopics');
+Route::get('/searchgroups', 'SearchGroupsController@show')->name('searchgroups');
+Route::get('/extfilter', 'FilterController@extfilter')->name('extfilter');
+Route::get('/analiz', 'VkApiController@analiz')->name('analiz');
+Route::get('/tool1', 'ToolsController@tool1')->name('tool1');
+Route::get('/tool2', 'ToolsController@tool2')->name('tool2');
+Route::get('/tool3', 'ToolsController@tool3')->name('tool3');
+Route::get('/tool4', 'ToolsController@tool4')->name('tool4');
+Route::get('/tool5', 'ToolsController@tool5')->name('tool5');
+Route::get('/showgroups', 'ShowGroupsController@show')->name('showgroups');
+Route::get('/showposts', 'ToolsController@showPosts')->name('showposts');
 
 Route::group(['middleware' => 'authVk'], function()
 {
     Route::get('/logout', 'VkApiController@logout')->name('logout');
+
+    Route::get('/group-viewer/{id?}', 'GroupViewerController@show')->name('groupviewer');
+    Route::get('/when-onlines', 'WhenOnlineController@show');
+    Route::get('/when-onlines-delete', 'WhenOnlineController@delete');
+    Route::get('/when-online-check', 'WhenOnlineController@index');
+
+    Route::get('/ajax', 'MyWorksController@ajax');
+    Route::get('/ajaxsamples/{id?}', 'MyWorksController@ajaxSamples');
+    Route::get('/ajaxleft', 'MyWorksController@ajaxleft');
+    Route::get('/ajaxgetworks', 'MyWorksController@ajaxgetworks');
+    Route::get('/ajaxgetcity', 'MyWorksController@ajaxgetcity');
+    Route::get('/ajaxgetcountries', 'MyWorksController@ajaxgetcountries');
+    Route::get('/ajaxgetuser/{name}', 'MyWorksController@ajaxgetuser');
+    Route::get('/ajaxgetcloud', 'MyWorksController@ajaxgetcloud');
     //Route::get('/profile', 'ProfileController@index')->name('profile');
 
     Route::get('/profile', function () {
@@ -194,75 +226,40 @@ Route::group(['middleware' => 'authVk'], function()
     Route::post('/showusers', 'CloudController@showusers')->name('showusers');
     Route::post('/showusersdelete', 'CloudController@showUsersDelete')->name('showusersdelete');
 
-    Route::get('/showposts', 'ToolsController@showPosts')->name('showposts');
-
     Route::get('/cloudshowusers', 'CloudController@cloudshowusers')->name('cloudshowusers');
     Route::get('/cloudshowgroups', 'CloudController@cloudshowgroups')->name('cloudshowgroups');
     Route::get('/cloudshowposts', 'CloudController@cloudshowposts')->name('cloudshowposts');
 
-    Route::get('/showgroups', 'ShowGroupsController@show')->name('showgroups');
     Route::post('/showgroups', 'ShowGroupsController@handler')->name('showgroups');
-
-    // Меню
-
-    Route::get('/filtergroups', 'WorksController@show')->name('filtergroups');
     Route::post('/filtergroups', 'WorksController@handler')->name('filtergroups');
-
-
-    Route::get('/getallmembers', 'WorksController@show')->name('getallmembers');
     Route::post('/getallmembers', 'WorksController@handler')->name('getallmembers');
-
-    Route::get('/getactivitygroups', 'WorksController@show')->name('getactivitygroups');
     Route::post('/getactivitygroups', 'WorksController@handler')->name('getactivitygroups');
-
-    Route::get('/getgroupcontacts', 'WorksController@show')->name('getgroupcontacts');
     Route::post('/getgroupcontacts', 'WorksController@handler')->name('getgroupcontacts');
-
-
-    Route::get('/userstargetgroups', 'WorksController@show')->name('userstargetgroups');
     Route::post('/userstargetgroups', 'WorksController@handler')->name('userstargetgroups');
-
-    // Поиск промо-постов
-    Route::get('/getpromoposts', 'WorksController@show')->name('getpromoposts');
     Route::post('/getpromoposts', 'WorksController@handler')->name('getpromoposts');
-
-    // Сбор активности в постах
-    Route::get('/getactivityposts', 'GetActivityPostsController@show')->name('getactivityposts');
     Route::post('/getactivityposts', 'GetActivityPostsController@handler')->name('postactivityposts');
-
-    // Фильтр пользователей
-    Route::get('/usersfilter', 'WorksController@show')->name('usersfilter');
     Route::post('/usersfilter', 'WorksController@handler')->name('usersfilter');
-
-    // Сбор активности со страниц
-    Route::get('/getactivityuser', 'WorksController@show')->name('getactivityuser');
     Route::post('/getactivityuser', 'WorksController@handler')->name('getactivityuser');
-
-    Route::get('/getrelatives', 'WorksController@show')->name('getrelatives');
     Route::post('/getrelatives', 'WorksController@handler')->name('getrelatives');
-
-
-    Route::get('getfriends', 'WorksController@show')->name('getfriends');
     Route::post('getfriends', 'WorksController@handler')->name('getfriends');
-
-
-    // Сообщества пользователей
-    Route::get('/usersgroups', 'WorksController@show')->name('usersgroups');
     Route::post('/usersgroups', 'WorksController@handler')->name('usersgroups');
-
-    // Все сообщества пользователей
-    Route::get('/usersallgroups', 'WorksController@show')->name('usersallgroups');
     Route::post('/usersallgroups', 'WorksController@handler')->name('usersallgroups');
-
-    // Лидеры мнений
-    Route::get('/opinionliders', 'WorksController@show')->name('opinionliders');
     Route::post('/opinionliders', 'WorksController@handler')->name('opinionliders');
-
-    Route::get('/getposts', 'GetPostsController@show')->name('getposts');
-    Route::post('/getposts', 'GetPostsController@handler')->name('getposts');;
-
-    Route::get('/topfollowers', 'TopFollowersController@show')->name('topfollowers');
+    Route::post('/getposts', 'GetPostsController@handler')->name('getposts');
     Route::post('/topfollowers', 'TopFollowersController@handler')->name('topfollowers');
+    Route::post('/socialnetworks', 'SocialNetworksController@handler')->name('socialnetworks');
+    Route::post('/gettopics', 'GetTopicsController@handler')->name('gettopics');
+    Route::post('/searchgroups', 'SearchGroupsController@store')->name('searchgroupsstore');
+    Route::post('/searchgroupscity', 'SearchGroupsController@city')->name('searchgroupscity');
+    Route::get('/getlikes', 'GetLikesController@show')->name('getlikes');
+    Route::post('/getlikes', 'GetLikesController@handler')->name('getlikes');
+    Route::post('/extfilter', 'FilterController@extfilterStore')->name('extfilterStore');
+    Route::post('/analiz', 'VkApiController@analizStore')->name('analizStore');
+    Route::post('/tool1', 'ToolsController@tool1Post')->name('tool1Post');
+    Route::post('/tool2', 'ToolsController@tool2Post')->name('tool2Post');
+    Route::post('/tool3', 'ToolsController@tool3Post')->name('tool3Post');
+    Route::post('/tool4', 'ToolsController@tool4Post')->name('tool4Post');
+    Route::post('/tool5', 'ToolsController@tool5Post')->name('tool5Post');
 
    // Route::resource('/toprofile', toProfileController::class);
    Route::get('/toprofile','toProfileController@index')->name('toprofile');
@@ -280,17 +277,6 @@ Route::group(['middleware' => 'authVk'], function()
     Route::get('/support/{id}', 'SupportController@show')->name('supportShow');
     Route::post('/supportreply/{id}', 'SupportController@supportReply')->name('supportReply');
 
-    Route::get('/socialnetworks', 'SocialNetworksController@show')->name('socialnetworks');
-    Route::post('/socialnetworks', 'SocialNetworksController@handler')->name('socialnetworks');
-
-    // Сбор обсуждений
-    Route::get('/gettopics', 'GetTopicsController@show')->name('gettopics');
-    Route::post('/gettopics', 'GetTopicsController@handler')->name('gettopics');
-
-    Route::get('/searchgroups', 'SearchGroupsController@show')->name('searchgroups');
-    Route::post('/searchgroups', 'SearchGroupsController@store')->name('searchgroupsstore');
-    Route::post('/searchgroupscity', 'SearchGroupsController@city')->name('searchgroupscity');
-
     Route::get('/newfriends', 'FriendsController@show')->name('NewFriendsShow');
     Route::post('/newfriends', 'FriendsController@store')->name('NewFriendsStore');
     Route::get('/newfriendscreate', 'FriendsController@create')->name('NewFriendsCreate');
@@ -307,61 +293,22 @@ Route::group(['middleware' => 'authVk'], function()
     Route::get('/newmembersupdate/{id}', 'NewMembersController@update')->name('NewMembersUpdate');
     Route::get('/newmembersget/{id}', 'NewMembersController@getNewMembers')->name('NewMembersGet');
 
-
-    // Все подписчики групп
-   /* Route::get('/getallmembers', 'GetAllMembersController@show')->name('getallmembers');
-    Route::post('/getallmembers', 'GetAllMembersController@store')->name('getallmembers');*/
-
-
-
-    // Сбор лайков
-    Route::get('/getlikes', 'GetLikesController@show')->name('getlikes');
-    Route::post('/getlikes', 'GetLikesController@handler')->name('getlikes');
-
-    Route::get('/extfilter', 'FilterController@extfilter')->name('extfilter');
-    Route::post('/extfilter', 'FilterController@extfilterStore')->name('extfilterStore');
-
-    Route::get('/analiz', 'VkApiController@analiz')->name('analiz');
-    Route::post('/analiz', 'VkApiController@analizStore')->name('analizStore');
-
-
-    Route::get('/tool1', 'ToolsController@tool1')->name('tool1');
-    Route::post('/tool1', 'ToolsController@tool1Post')->name('tool1Post');
-
-    Route::get('/tool2', 'ToolsController@tool2')->name('tool2');
-    Route::post('/tool2', 'ToolsController@tool2Post')->name('tool2Post');
-
-    Route::get('/tool3', 'ToolsController@tool3')->name('tool3');
-    Route::post('/tool3', 'ToolsController@tool3Post')->name('tool3Post');
-
-    Route::get('/tool4', 'ToolsController@tool4')->name('tool4');
-    Route::post('/tool4', 'ToolsController@tool4Post')->name('tool4Post');
-
-    Route::get('/tool5', 'ToolsController@tool5')->name('tool5');
-    Route::post('/tool5', 'ToolsController@tool5Post')->name('tool5Post');
-
-
    // Route::post('/usersgroups', 'UsersGroupsController@getIds')->name('usersgroupsgetids');
 
+    Route::get('/chains', 'ChainController@index')->name('chains');
+    Route::get('/storechain/{id}', 'ChainController@storeChain')->name('storechain');
+    Route::get('/chainshow/{id}', 'ChainController@show')->name('chainshow');
+    Route::post('/chainrun/{id}', 'ChainController@run')->name('chainrun');
+
+    Route::get('/post', 'PostsController@index')->name('post.index');
+    Route::get('/post/{post}', 'PostsController@show')->name('post.show');
+    Route::get('/create', 'PostsController@create')->name('post.create');
+    Route::post('/store', 'PostsController@store')->name('post.store');
+    Route::get('/post/{post}/edit', 'PostsController@edit')->name('post.edit');
+    Route::patch('/post/{post}', 'PostsController@update')->name('post.update');
+    Route::delete('/post/{post}', 'PostsController@destroy')->name('post.delete');
+
 });
-
-
-// ЦЕПОЧКИ
-
-Route::get('/chains', 'ChainController@index')->name('chains');
-Route::get('/storechain/{id}', 'ChainController@storeChain')->name('storechain');
-Route::get('/chainshow/{id}', 'ChainController@show')->name('chainshow');
-Route::post('/chainrun/{id}', 'ChainController@run')->name('chainrun');
-
-
-
-Route::get('/post', 'PostsController@index')->name('post.index');
-Route::get('/post/{post}', 'PostsController@show')->name('post.show');
-Route::get('/create', 'PostsController@create')->name('post.create');
-Route::post('/store', 'PostsController@store')->name('post.store');
-Route::get('/post/{post}/edit', 'PostsController@edit')->name('post.edit');
-Route::patch('/post/{post}', 'PostsController@update')->name('post.update');
-Route::delete('/post/{post}', 'PostsController@destroy')->name('post.delete');
 
 Route::get('/ayaz', 'VkApiController@ayaz')->name('ayaz');
 /*

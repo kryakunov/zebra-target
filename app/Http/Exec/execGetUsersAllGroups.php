@@ -68,7 +68,7 @@ class UsersAllGroups extends Exec
             $this->setPercent($percent);
 
 
-            $result = json_decode(file_get_contents('https://api.vk.com/method/execute.groupsGet?v=5.130&count=1000&offset=0&extended=1&n='.$n.'&users='.$users.'&access_token='.$this->access_token), true);
+            $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.groupsGet?v=5.130&count=1000&offset=0&extended=1&n='.$n.'&users='.$users.'&access_token='.$this->access_token), true);
 
             $this->pause();
 
@@ -94,7 +94,7 @@ class UsersAllGroups extends Exec
                     $this->access_token = $this->getToken();
                     $this->setLog('Сменил токен');
                     $params = http_build_query($request_params);
-                    $result = json_decode(file_get_contents('https://api.vk.com/method/execute.groupsGet?v=5.130&count=1000&offset=0&extended=1&n='.$n.'&users='.$users.'&access_token='.$this->access_token), true);
+                    $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.groupsGet?v=5.130&count=1000&offset=0&extended=1&n='.$n.'&users='.$users.'&access_token='.$this->access_token), true);
 
                     if (isset($result['response'])) $error = false;
 

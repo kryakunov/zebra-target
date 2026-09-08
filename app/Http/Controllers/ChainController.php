@@ -7,8 +7,8 @@ use App\mywork;
 use App\Chain;
 use App\WorkType;
 use App\ChainWorks;
-use App\Cloud;
-use App\Http\Controllers\WorksController;
+use App\Services\Works\WorkCreationService;
+use App\Services\Works\WorkPageService;
 
 class ChainController extends Controller
 {
@@ -26,45 +26,20 @@ class ChainController extends Controller
         return view('chains.index', ['chains' => $chains]);
     }
 
-    public function show($id)
+    public function show($id, WorkPageService $pages)
     {
         $chain = Chain::where('id', '=', $id)->first();
 
         $steps = $this->getChainModels($chain->id);
 
-        // Вытаскиваем из таблицы данные для формирования страницы
-        $page = WorkType::where('type', '=', $steps[0]['type'])->first();
+        $page = $pages->findByUri($steps[0]['type']);
 
-        $works = $this->getMyWorks($page);
-
-        $lists = $this->getMyLists($page);
-  
-        return view('chains.show', ['data' => $chain, 'steps' => $steps,  'works' => $works, 'lists' => $lists]);
-    }
-
-
-    public function getMyWorks($page)
-    {
-
-        $works = mywork::where('vk_id', '=', session('id'))->orderBy('id', 'DESC')->get();
-
-        $works = $works->filter(function ($value, $key ) use ($page){
-            return $value->WorkType->type_desc == $page->type_input;
-          });
-
-        return $works;
-    }
-
-    public function getMyLists($page)
-    {
-
-        $lists = Cloud::where('vk_id', '=', session('id'))->orderBy('id', 'DESC')->get();
-
-        $lists = $lists->filter(function ($value, $key ) use ($page){
-            return $value->WorkType->type_desc == $page->type_input;
-          });
-
-        return $lists;
+        return view('chains.show', [
+            'data' => $chain,
+            'steps' => $steps,
+            'works' => $pages->getMyWorks($page),
+            'lists' => $pages->getMyLists($page),
+        ]);
     }
 
     // Сохраняет цепочку задач 
@@ -186,24 +161,22 @@ class ChainController extends Controller
     }
 
 
-    public function run(Request $request, $id)
+    public function run(Request $request, $id, WorkCreationService $workCreation)
     {
-
         $chain = Chain::where('id', '=', $id)->first();
 
         $works = $this->getChainModels($chain->id);
         $parentId = null;
 
-        foreach($works as $work)
-        {
+        foreach ($works as $work) {
             $req = unserialize($work->request);
-            foreach($req as $key => $value){
+            foreach ($req as $key => $value) {
                 $request[$key] = $value;
             }
             $request['parent_id'] = $parentId;
 
-            $worksController = new WorksController();
-            $parentId = $worksController->handler($request, $work->type, true);
+            $result = $workCreation->create($request, $work->type, true);
+            $parentId = $result->workId;
         }
     }
 }

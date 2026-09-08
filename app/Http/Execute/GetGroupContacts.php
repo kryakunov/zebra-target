@@ -57,7 +57,7 @@ class GetGroupContacts extends Execute
             $request_params['group_ids'] = $ids;
             $get_params = http_build_query($request_params);
             $this->pause();
-            $result     = json_decode(file_get_contents('https://api.vk.com/method/groups.getById?' . $get_params), true);
+            $result     = json_decode(file_get_contents('https://api.vk.ru/method/groups.getById?' . $get_params), true);
 
             if (isset($result['error']))
             {
@@ -65,7 +65,7 @@ class GetGroupContacts extends Execute
                 $this->changeStatus($this->access_token, 'busy');
                 $this->getToken();
                 $this->pause();
-                $result     = json_decode(file_get_contents('https://api.vk.com/method/groups.getById?' . $get_params), true);
+                $result     = json_decode(file_get_contents('https://api.vk.ru/method/groups.getById?' . $get_params), true);
 
                 if (isset($result['error'])){
                     $this->setError($result['error']['error_code'] . ' > ' . $result['error']['error_msg'] . ' DUMP! ');

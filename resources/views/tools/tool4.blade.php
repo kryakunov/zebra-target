@@ -1,12 +1,13 @@
 @extends('layout')
 
-@section('title') @parent Удалить дубли @endsection
-
 @section('content')
 <div class="tab">
-<div class="title">Удалить дубли</div>
+@if(session('token'))
+<h1 class="title">Удалить дубли</h1>
+@endif
 <div class="content">
 @include('_ScriptDesk')
+@include('partials.tool-guest-start')
 
 
 <form action="{{route('tool4Post')}}" method="post" class="mb-4">
@@ -41,4 +42,5 @@
 
 
 
+@include('partials.tool-guest-end')
 @endsection

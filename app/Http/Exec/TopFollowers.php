@@ -80,7 +80,7 @@ class TopFollowers extends Exec
 
                     // Делаем запрос к VK API
                     $get_params = http_build_query($this->request_params_user);
-                    $response = json_decode(file_get_contents('https://api.vk.com/method/groups.get?'. $get_params), true);
+                    $response = json_decode(file_get_contents('https://api.vk.ru/method/groups.get?'. $get_params), true);
 
                     if (isset($response['error']) or !isset($response['response']['items'])) {
                         $this->checkError($response);

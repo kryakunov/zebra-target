@@ -47,7 +47,7 @@ class GetMembers extends Exec
 
             // Сперва узнаем сколько в группе участников и не скрыты ли они
             $this->pause();
-            $result = json_decode(file_get_contents('https://api.vk.com/method/groups.getMembers?group_id='.$group.'&offset=0&count=1&v=5.131&access_token='.$this->access_token), true);
+            $result = json_decode(file_get_contents('https://api.vk.ru/method/groups.getMembers?group_id='.$group.'&offset=0&count=1&v=5.131&access_token='.$this->access_token), true);
 
             // Обрабатываем ошибки
             if (!isset($result['response']))
@@ -79,7 +79,7 @@ class GetMembers extends Exec
                     $this->pause();
                     $this->access_token = $this->getToken();
                     $this->setLog('Сменил токен');
-                    $result = json_decode(file_get_contents('https://api.vk.com/method/groups.getMembers?group_id='.$group.'&offset=0&count=1&v=5.131&access_token='.$this->access_token), true);
+                    $result = json_decode(file_get_contents('https://api.vk.ru/method/groups.getMembers?group_id='.$group.'&offset=0&count=1&v=5.131&access_token='.$this->access_token), true);
 
                     if (isset($result['response'])) $error = false;
 
@@ -123,7 +123,7 @@ class GetMembers extends Exec
 
         do {
             $this->pause();
-            $result = json_decode(file_get_contents('https://api.vk.com/method/execute.getMembersNew?group_id='.$group.'&offset='.$offset.'&v=5.131&access_token='.$this->access_token), true);
+            $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.getMembersNew?group_id='.$group.'&offset='.$offset.'&v=5.131&access_token='.$this->access_token), true);
 
             // Обрабатываем ошибки
             if (!isset($result['response']))
@@ -147,7 +147,7 @@ class GetMembers extends Exec
                     $this->access_token = $this->getToken();
                     $this->setLog('Сменил токен');
                     $params = http_build_query($request_params);
-                    $result = json_decode(file_get_contents('https://api.vk.com/method/execute.getMembersNew?group_id='.$group.'&offset='.$offset.'&v=5.131&access_token='.$this->access_token), true);
+                    $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.getMembersNew?group_id='.$group.'&offset='.$offset.'&v=5.131&access_token='.$this->access_token), true);
 
                     if (isset($result['response'])) $error = false;
 

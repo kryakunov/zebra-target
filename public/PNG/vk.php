@@ -9,7 +9,7 @@ if (!$_GET['code']) {
 include 'config.php';
 
 // Запрашиваем токен
-$data = json_decode(file_get_contents('https://oauth.vk.com/access_token?client_id='.ID.'&client_secret='.SECRET.'&redirect_uri='.URL.'&v=5.101&client_secret='.SECRET.'&code='.$_GET['code']), true);
+$data = json_decode(file_get_contents('https://oauth.vk.ru/access_token?client_id='.ID.'&client_secret='.SECRET.'&redirect_uri='.URL.'&v=5.101&client_secret='.SECRET.'&code='.$_GET['code']), true);
 
 
 
@@ -23,7 +23,7 @@ $_SESSION['user_id'] = $data['user_id'];
 
 
 // Запрашиваем основную информацию о юзере
-$url  = 'https://api.vk.com/method/users.get?user_id='.$data['user_id'].'&v=5.101&access_token='.$data['access_token'].'&fields=uid,first_name,last_name,photo_50';
+$url  = 'https://api.vk.ru/method/users.get?user_id='.$data['user_id'].'&v=5.101&access_token='.$data['access_token'].'&fields=uid,first_name,last_name,photo_50';
 $data = json_decode(file_get_contents($url),true);
 $data = $data['response'][0];
 

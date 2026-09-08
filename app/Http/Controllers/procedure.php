@@ -25,7 +25,7 @@ $n = 0;
 $error = 0;
 for($i = 0; $i < 5000; $i++)
 {
-    $result = json_decode(file_get_contents('https://api.vk.com/method/execute.wallGet?' . $params), true);
+    $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.wallGet?' . $params), true);
 
     sleep(2);
 

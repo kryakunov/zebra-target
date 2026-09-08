@@ -7,6 +7,7 @@
 <div class="content">
 
 @include('_ScriptDesk')
+@include('partials.tool-guest-start')
 
 @include('errors.exceptions')
 @include('errors.session')
@@ -39,4 +40,5 @@
 </form> 
 <br>
 
+@include('partials.tool-guest-end')
 @endsection

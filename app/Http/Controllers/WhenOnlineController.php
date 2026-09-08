@@ -13,7 +13,7 @@ date_default_timezone_set('Asia/Yekaterinburg');
 class WhenOnlineController extends Controller
 {
     public $token;
-    public $users = [ '21257717','185466160', '484403797'];
+    public $users = [ '21257717','185466160', '323312073','484403797','484403797'];
 
     public function __construct()
     {
@@ -92,7 +92,7 @@ class WhenOnlineController extends Controller
         );
 
         $params = http_build_query($request_params);
-        $result = json_decode(file_get_contents('https://api.vk.com/method/users.get?' . $params), true);
+        $result = json_decode(file_get_contents('https://api.vk.ru/method/users.get?' . $params), true);
 
         return $result;
     }

@@ -101,7 +101,7 @@ class GetFriends extends Execute
             $request_params['n'] = $n;
 			$get_params = http_build_query($request_params);
             $this->pause();
-			$result = json_decode(file_get_contents('https://api.vk.com/method/execute.getFriends?' . $get_params), true);
+			$result = json_decode(file_get_contents('https://api.vk.ru/method/execute.getFriends?' . $get_params), true);
 
             // Обрабатываем ошибки
             if (!isset($result['response']))
@@ -125,7 +125,7 @@ class GetFriends extends Execute
                     $request_params['access_token'] = $this->getToken();
                     $get_params = http_build_query($request_params);
                     $this->setLog('Сменил токен');
-                    $result = json_decode(file_get_contents('https://api.vk.com/method/execute.getFriends?' . $get_params), true);
+                    $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.getFriends?' . $get_params), true);
 
                     if (isset($result['response'])) $error = false;
 
@@ -157,7 +157,7 @@ class GetFriends extends Execute
                 $this->pause();
 
                 // Возвращает за раз до 25000 человек
-                $result = json_decode(file_get_contents('https://api.vk.com/method/execute.getFollowersUser?user='.$repeatParse[$i].'&offset='.$offset.'&count='.$followersCount[$i].'&v=5.131&access_token='.$this->access_token), true);
+                $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.getFollowersUser?user='.$repeatParse[$i].'&offset='.$offset.'&count='.$followersCount[$i].'&v=5.131&access_token='.$this->access_token), true);
                 $offset += 25000;
 
                 // Обрабатываем ошибки
@@ -181,7 +181,7 @@ class GetFriends extends Execute
                         $this->pause();
                         $this->access_token = $this->getToken();
                         $this->setLog('Сменил токен');
-                        $result = json_decode(file_get_contents('https://api.vk.com/method/execute.getFollowersUser?user='.$repeatParse[$i].'&offset='.$offset.'&count='.$followersCount[$i].'&v=5.131&access_token='.$this->access_token), true);
+                        $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.getFollowersUser?user='.$repeatParse[$i].'&offset='.$offset.'&count='.$followersCount[$i].'&v=5.131&access_token='.$this->access_token), true);
 
                         if (isset($result['response'])) $error = false;
 
@@ -234,7 +234,7 @@ class GetFriends extends Execute
             $this->pause();
 
             // получаем всех подписчиков где можно спарсить одним запросом (до 1000 штук)
-            $result = json_decode(file_get_contents('https://api.vk.com/method/execute.getFollowers?' . $get_params), true);
+            $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.getFollowers?' . $get_params), true);
 
             // Обрабатываем ошибки
             if (!isset($result['response']))
@@ -257,7 +257,7 @@ class GetFriends extends Execute
                     $this->pause();
                     $this->access_token = $this->getToken();
                     $this->setLog('Сменил токен');
-                    $result = json_decode(file_get_contents('https://api.vk.com/method/execute.getFollowers?' . $get_params), true);
+                    $result = json_decode(file_get_contents('https://api.vk.ru/method/execute.getFollowers?' . $get_params), true);
 
                     if (isset($result['response'])) $error = false;
 

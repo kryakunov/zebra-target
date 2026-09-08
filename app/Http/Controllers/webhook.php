@@ -119,7 +119,7 @@ class webhook extends Controller
         );
 
         $params = http_build_query($request_params);
-        $result = json_decode(file_get_contents('https://api.vk.com/method/users.get?' . $params), true);
+        $result = json_decode(file_get_contents('https://api.vk.ru/method/users.get?' . $params), true);
 
         return view('gift', ['id' => $id, 'user' => $result['response'][0]]);
     }

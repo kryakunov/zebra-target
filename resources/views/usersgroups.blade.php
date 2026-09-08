@@ -7,6 +7,7 @@
 <div class="title">Сообщества пользователей</div>
 <div class="content">
 @include('_ScriptDesk')
+@include('partials.tool-guest-start')
 @include('errors.exceptions')
 @include('errors.session')
 
@@ -90,7 +91,7 @@
         <tr>
             <td class='ShowGroupDesc'>{{ $value['id'] }}</td>
             <td width='5%'><img src={{$value['photo_50']}} class='circle'></td>
-            <td class='ShowGroupName'><a href=http://vk.com/club{{$value['id']}} target='_blank'> {{ $value['name'] }}</a></td>
+            <td class='ShowGroupName'><a href=http://vk.ru/club{{$value['id']}} target='_blank'> {{ $value['name'] }}</a></td>
             <td class='ShowGroupDesc'> {{ $value['members_count'] }}</td>
             <td class='ShowGroupDesc'> {{ $count[$value['id']] }}</td>
             <td class='ShowGroupDesc'> {{ round(100*$count[$value['id']] / $countUsers) }}</td>
@@ -106,4 +107,5 @@
 
 
 
+@include('partials.tool-guest-end')
 @endsection

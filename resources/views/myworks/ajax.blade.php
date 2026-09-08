@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/css/style.css" >
     <script type="text/javascript" src="/scripts.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-    <!--<script type="text/javascript" src="https://vk.com/js/api/openapi.js?162"></script>-->
+    <!--<script type="text/javascript" src="https://vk.ru/js/api/openapi.js?162"></script>-->
 </head>
   <body>
 

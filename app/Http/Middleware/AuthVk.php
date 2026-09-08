@@ -18,7 +18,17 @@ class AuthVk
         if (session('token')) {
             return $next($request);
         }
-        
-        return redirect()->route('guest');
+
+        if ($request->ajax() || $request->wantsJson()) {
+            return response()->json(['message' => 'Требуется авторизация'], 401);
+        }
+
+        if ($request->isMethod('get')) {
+            return redirect()->route('guest')
+                ->with('error', 'Войдите через ВК, чтобы открыть этот раздел.');
+        }
+
+        return redirect()->back()
+            ->with('error', 'Войдите через ВК, чтобы выполнить это действие.');
     }
 }

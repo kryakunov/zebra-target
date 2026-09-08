@@ -1,12 +1,13 @@
 @extends('layout')
 
-@section('title') @parent Фильтр пользователей @endsection
-
 @section('content')
 <div class="tab">
-<div class="title">Фильтр пользователей</div>
+@if(session('token'))
+<h1 class="title">Фильтр пользователей</h1>
+@endif
 <div class="content">
 @include('_ScriptDesk')
+@include('partials.tool-guest-start')
 
 <form action="{{route('filterStore')}}" method="post" class="mb-4">
 @csrf
@@ -189,4 +190,5 @@
 
 
 
+@include('partials.tool-guest-end')
 @endsection
